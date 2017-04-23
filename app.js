@@ -13,14 +13,9 @@ const db = low("./data/db.json", {
 
 // Routes
 // GET /api/users
-api.get("/api/users", (req, res) => {
-        const user = db.get("users")
-            .find({ id: req.params.id })
-            .value()
-
-        res.send(user);
-    })
-    // PUT /api/users
+const usersController = require("./controllers/users-controller")(db);
+api.get("/api/users", user - controller.get);
+// PUT /api/users
 api.put("/api/users", (req, res) => {
         db.get("users")
             .push(req.body)
@@ -30,6 +25,7 @@ api.put("/api/users", (req, res) => {
             .then(user => res.send(user));
     })
     // POST /api/login
+
 
 // Init
 let port = 3000;
