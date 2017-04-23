@@ -17,38 +17,44 @@ module.exports = function(db) {
         return userId + authKey;
     }
 
+    ////// GET \\\\\\
     // returns to server all users from db
     function get(req, res) {
+
         let user = req.user;
-
-        if (!user) {
-            res.status(401)
-                .json("Unauthorized user!");
-            return;
-        }
-
+        // temporary skip authorization
+        /*
+                if (!user) {
+                    res.status(401)
+                        .json("Unauthorized user!");
+                    return;
+                }
+        */
         const users = db.get("users")
             .map(function(user) {
                 return {
                     username: user.username,
                     id: user.id
                 };
-            });
+            }).value();
 
         res.json({
             result: users
         });
     }
 
+    ////// POST \\\\\\
     // adds a new user to db
     function post(req, res) {
         let user = req.body;
+
         if (!user || typeof user.username !== 'string' || typeof user.passHash !== 'string') {
             res.status(400)
                 .json('Invalid user');
             return;
         }
-        /* // implement validation
+
+        // TODO: implement validation
         let error = validate(user);
 
         if (error) {
@@ -56,10 +62,10 @@ module.exports = function(db) {
                 .json(error.message);
             return;
         }
-        */
+
         let dbUser = db.get('users').find({
             usernameToLower: user.username.toLowerCase()
-        });
+        }).value();
 
         if (dbUser) {
             res.status(400)
@@ -73,22 +79,23 @@ module.exports = function(db) {
             .push(req.body)
             .last()
             .assign({ id: Date.now() })
-            .write()
-            .then(user => {
-                res.status(201).json({
-                    result: {
-                        username: user.username
-                    }
-                });
-            });
+            .write();
+
+        res.status(201).json({
+            result: {
+                username: user.username
+            }
+        });
     }
 
+    ////// PUT \\\\\\
     // verify and return authKey for a user 
     function put(req, res) {
         let reqUser = req.body;
         let user = db.get('users').find({
             usernameToLower: reqUser.username.toLowerCase()
-        });
+        }).value();
+        console.log(user);
         if (!user || user.passHash !== reqUser.passHash) {
             res.status(404)
                 .json('Invalid username or password');

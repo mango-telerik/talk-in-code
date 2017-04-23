@@ -1,4 +1,19 @@
 {
-  "users": [],
+  "users": [
+    {
+      "username": "admin",
+      "passHash": "a1234",
+      "usernameToLower": "admin",
+      "id": 1492951868612,
+      "authKey": "1492951868612bi)=z,amaZO[PE,≠{4\"6ObKk)Z@r3N"
+    },
+    {
+      "username": "guest",
+      "passHash": "12345",
+      "usernameToLower": "guest",
+      "id": 1492956057651,
+      "authKey": "1492956057651HvZKp3V96C5ODg\"kKXtg≠Dd(F§Pao9"
+    }
+  ],
   "posts": []
 }
