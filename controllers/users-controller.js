@@ -34,6 +34,7 @@ module.exports = function(db) {
             .map(function(user) {
                 return {
                     username: user.username,
+                    email: user.email,
                     id: user.id
                 };
             }).value();
@@ -95,7 +96,6 @@ module.exports = function(db) {
         let user = db.get('users').find({
             usernameToLower: reqUser.username.toLowerCase()
         }).value();
-        console.log(user);
         if (!user || user.passHash !== reqUser.passHash) {
             res.status(404)
                 .json('Invalid username or password');

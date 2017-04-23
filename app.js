@@ -20,7 +20,6 @@ const usersController = require("./controllers/users-controller")(db);
 // authorize user first
 
 app.use('/api', function(req, res, next) {
-    console.log(req.headers);
     var authKey = req.headers['x-auth-key'];
     req.user = db.get('users').find({
         authKey: authKey
