@@ -22,14 +22,13 @@ module.exports = function(db) {
     function get(req, res) {
 
         let user = req.user;
-        // temporary skip authorization
-        /*
-                if (!user) {
-                    res.status(401)
-                        .json("Unauthorized user!");
-                    return;
-                }
-        */
+
+        if (!user) {
+            res.status(401)
+                .json("Unauthorized user!");
+            return;
+        }
+
         const users = db.get("users")
             .map(function(user) {
                 return {
