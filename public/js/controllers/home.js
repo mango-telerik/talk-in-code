@@ -51,7 +51,10 @@ function all(context) {
                             });
                         }, 1000);
                     }, function(err) {
-                        toastr.error(err.responseText);
+                        if (typeof err === "object") {
+                            err = err.responseText;
+                        }
+                        toastr.error(err);
                         context.redirect('#/');
                     })
             });

@@ -28,6 +28,9 @@ function register(context) {
                             document.location.reload(true);
                         }, 1000);
                     }, function(err) {
+                        if (typeof err === "object") {
+                            err = err.responseText;
+                        }
                         toastr.error(err);
                     });
             });
