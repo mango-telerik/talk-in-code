@@ -17,29 +17,13 @@
         <h1>talk.in.code</h1>
         <p>the best place for developers</p>
     </header>
-    <div class="container-fluid">
-        <nav id="main-nav-panel">
-            <div id="container-sign-in">
-                <h4>login or register</h4>
-                <form>
-                    <div class="form-group">
-                        <label for="tb-username">Username:</label>
-                        <input type="text" placeholder="username" id="tb-username" class="form-control">
-                        <label for="tb-password">Password:</label>
-                        <input type="password" placeholder="password" id="tb-password" class="form-control">
-                    </div>
-                    <button id="btn-sign-in" class="btn btn-default">login</button>
-                    <a href="#/users/register" id="btn-register-new" class="btn btn-primary">register</a>
-                </form>
-            </div>
-            <div id="container-sign-out">
-                <button id="btn-sign-out" class="btn btn-default">logout</button>
-            </div>
-        </nav>
-    </div>
-    <div class="container-fluid">
-        <main id="content"></main>
-        <aside id="aside"></aside>
+
+    <div id="content">
+        <div class="container-fluid" id="form-field"></div>
+        <div class="container-fluid">
+            <main id="main-content"></main>
+            <aside id="aside"></aside>
+        </div>
     </div>
 
     <script src="./jspm_packages/system.js"></script>

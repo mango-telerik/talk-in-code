@@ -7,7 +7,11 @@ function register(context) {
     $("#main-nav-panel").hide();
     templates.get('register')
         .then(function(template) {
-            context.$element().html(template());
+            context
+                .$element()
+                .find("#form-field")
+                .html(template());
+
             $('#btn-register').on('click', function() {
                 var user = {
                     username: $('#tb-reg-username').val(),

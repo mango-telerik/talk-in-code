@@ -17,6 +17,7 @@ function send(method, url, options) {
                 resolve(res);
             },
             error: function(err) {
+                console.log(err);
                 reject(err);
             }
         });
