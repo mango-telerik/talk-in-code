@@ -23,8 +23,14 @@ Telerik Academy "JS Applications" course teamwork project
     - other - NO
 
 ## instruction for installation
+
+- check if you have nodejs installed `node -v`
+- then you need some package managers
+    - bower - `npm install bower -g`
+    - jspm - `npm install jspm -g`
 - download or clone repo
 - install node modules - `npm install`
 - install bower components - `bower install`
+- insrall jspm packages - `jspm install`
 - run server - `npm start`
 - open app in browser - `http://localhost:3000/#`
