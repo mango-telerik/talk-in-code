@@ -8,15 +8,13 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-// Start database using file-async storage
-// For ease of use, read is synchronous
+
+// File async storage
 const db = low("./data/db.json", {
-    //storage: fileAsync
-})
+    storage: fileAsync
+});
 
 // Routes
-// GET /api/users
-const usersController = require("./controllers/users-controller")(db);
 // authorize user first
 
 app.use('/api', function(req, res, next) {
@@ -27,13 +25,29 @@ app.use('/api', function(req, res, next) {
     next();
 });
 
+// Users
+const usersController = require("./controllers/users-controller")(db);
 app.get("/api/users", usersController.get);
-
-// POST /api/users
 app.post("/api/users", usersController.post);
-
-// PUT /api/login
 app.put("/api/auth", usersController.put);
+/*app.delete("/api/users/:id", usersController.delete);
+
+// Posts
+const postsController = require("./controllers/posts-controller")(db);
+app.get("/api/posts", postsController.get);
+app.post("/api/posts", postsController.post);
+app.put("/api/posts/:id", postsController.put);
+app.delete("/api/posts/:id", postsController.delete);
+
+// Comments
+const commentsController = require("./controllers/comments-controller")(db);
+app.get("/api/posts/:id/messages", commentsController.get);
+app.post("/api/posts/:id/messages", commentsController.post);
+app.delete("/api/posts/:id/messages/:id", commentsController.delete);
+
+// Categories
+const categoryController = require("./controllers/category-controller")(db);
+app.get("/api/categories", categoryController.get);*/
 
 // Init
 let port = 3000;

@@ -16,6 +16,21 @@ function validateString(str, min, max, chars) {
     }
 }
 
+function validateEmail(email) {
+    if (!email || email.length === 0) {
+        return {
+            message: 'Invalid input: email cannot be empty'
+        };
+    }
+    //copied from http://emailregex.com/
+    var pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!pattern.test(email)) {
+        return {
+            message: 'Invalid email'
+        };
+    }
+}
+
 function validateUrl(url) {
 
     if (!url || url.length === 0) {
@@ -32,5 +47,6 @@ function validateUrl(url) {
 
 export {
     validateString,
+    validateEmail,
     validateUrl
 };

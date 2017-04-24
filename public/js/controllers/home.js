@@ -12,7 +12,12 @@ function all(context) {
                 .html(template());
         })
         .then(() => {
-            $("#main-nav-panel").show();
+            $("#show-form").on("click", () => $("#login-panel").slideDown(400, () => {
+                $("#show-form").fadeOut();
+            }));
+            $("#hide-form").on("click", () => $("#login-panel").slideUp(400, () => {
+                $("#show-form").fadeIn();
+            }));
 
             if (data.hasUser()) {
                 $('#container-sign-in').hide();
@@ -29,6 +34,7 @@ function all(context) {
                         setTimeout(function() {
                             $('#container-sign-out').fadeOut(100, function() {
                                 $('#container-sign-in').fadeIn(500);
+                                $("#show-form").html(`<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span> login`);
                             });
                         }, 1000);
                     });
@@ -47,13 +53,20 @@ function all(context) {
                         context.redirect('#/home');
                         setTimeout(function() {
                             $('#container-sign-in').fadeOut(100, function() {
-                                $('#container-sign-out').fadeIn(500);
+                                $('#container-sign-out')
+                                    .fadeIn(500)
+                                    .find("h4")
+                                    .html("Hello, " + user.username);
+                                $("#show-form").html(user.username);
                             });
                         }, 1000);
                     }, function(err) {
-                        toastr.error(err.responseText);
+                        if (typeof err === "object") {
+                            err = err.responseText;
+                        }
+                        toastr.error(err);
                         context.redirect('#/');
-                    })
+                    });
             });
         })
         .then(templates.get("home")
@@ -63,7 +76,7 @@ function all(context) {
                     .find("#main-content")
                     .html(template());
             })
-        )
+        );
 }
 
 export { all };
