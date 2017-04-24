@@ -39,6 +39,7 @@ function all(context) {
                     username: $('#tb-username').val(),
                     password: $('#tb-password').val()
                 };
+
                 data.signIn(user)
                     .then(function(user) {
                         toastr.success('User signed in!');
@@ -51,7 +52,8 @@ function all(context) {
                         }, 1000);
                     }, function(err) {
                         toastr.error(err.responseText);
-                    });
+                        context.redirect('#/');
+                    })
             });
         })
         .then(templates.get("home")
