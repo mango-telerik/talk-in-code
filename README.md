@@ -31,6 +31,6 @@ Telerik Academy "JS Applications" course teamwork project
 - download or clone repo
 - install node modules - `npm install`
 - install bower components - `bower install`
-- insrall jspm packages - `jspm install`
+- install jspm packages - `jspm install`
 - run server - `npm start`
 - open app in browser - `http://localhost:3000/#`
