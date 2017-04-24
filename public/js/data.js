@@ -11,10 +11,21 @@ const USERNAME_CHARS = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234
 
 /* Users */
 function register(user) {
-    var error = validator.validateString(user.username, USERNAME_MIN_LENGTH, USERNAME_MAX_LENGTH, USERNAME_CHARS);
+    var wrongUser = validator.validateString(user.username, USERNAME_MIN_LENGTH, USERNAME_MAX_LENGTH, USERNAME_CHARS);
+    var wrongEmail = validator.validateEmail(user.email);
 
-    if (error) {
-        return Promise.reject(error.message);
+    let message = "";
+
+    if (wrongUser) {
+        message += wrongUser.message + " ";
+    }
+
+    if (wrongEmail) {
+        message += wrongEmail.message;
+    }
+
+    if (message.length > 0) {
+        return Promise.reject(message);
     }
 
     var reqUser = {

@@ -47,5 +47,6 @@ function validateUrl(url) {
 
 export {
     validateString,
+    validateEmail,
     validateUrl
 };

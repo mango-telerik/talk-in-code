@@ -1,11 +1,20 @@
 {
-    "users": [{
-        "email": "admin@mail.bg",
-        "username": "admin",
-        "passHash": "7b902e6ff1db9f560443f2048974fd7d386975b0",
-        "usernameToLower": "admin",
-        "id": 1492987452086,
-        "authKey": "1492987452086S]NqC=K≠0mFfkeWfFxQI7H/exh1O=z"
-    }],
-    "posts": []
+  "users": [
+    {
+      "email": "admin@mail.bg",
+      "username": "admin",
+      "passHash": "7b902e6ff1db9f560443f2048974fd7d386975b0",
+      "usernameToLower": "admin",
+      "id": 1492987452086,
+      "authKey": "1492987452086S]NqC=K≠0mFfkeWfFxQI7H/exh1O=z"
+    },
+    {
+      "email": "erewrwerwe",
+      "username": "rwerwr",
+      "passHash": "72828196078c5b798b59eb0ac0a7a35bedc599cd",
+      "usernameToLower": "rwerwr",
+      "id": 1493029382411
+    }
+  ],
+  "posts": []
 }
