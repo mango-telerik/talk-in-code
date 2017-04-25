@@ -1,4 +1,4 @@
-<h1 style="font-size:30px; font-family:consolas; color:lightgrey; background-color:#24292e; padding:15px"> > talk-in-code </h1>
+<h1 style="font-size:30px; font-family:consolas; color:lightgrey; background-color:#24292e; padding:15px"> > talk.in.code </h1>
 <img src="https://avatars2.githubusercontent.com/u/27736291?v=3&s=200" width="9%" style="float:right">
 
 Team **Mango**  
