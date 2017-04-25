@@ -2,6 +2,7 @@ import * as templates from "templates";
 import $ from "jquery";
 import * as data from "data";
 import * as toastr from "toastr";
+import "jquery-ui";
 
 function all(context) {
     templates.get("login")
@@ -75,6 +76,8 @@ function all(context) {
                     .$element()
                     .find("#main-content")
                     .html(template());
+
+                $("#all-posts-sortable").sortable();
             })
         );
 }
