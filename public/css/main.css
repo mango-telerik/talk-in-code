@@ -24,6 +24,9 @@ li {
 .header-info {
     background-color: #24292e;
     position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
 }
 
 .header-info>h1 {
