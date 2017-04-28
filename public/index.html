@@ -5,21 +5,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--trqbvwashe da sloja jquery link za da trygne side bar, po-tochno sidebar-javascript-->
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="./bower_components/jquery-ui/themes/base/all.css">
     <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./bower_components/toastr/toastr.min.css">
     <link rel="stylesheet" href="./css/main.css">
-    <link rel="icon" href="https://is5-ssl.mzstatic.com/image/thumb/Purple22/v4/76/c6/15/76c615c8-f26a-4cc9-acd2-a6adcfe88487/source/256x256bb.jpg">
+    <script src="js/sidebar-javascript.js" type="text/javascript"></script>
     <title>talk.in.code</title>
 </head>
 
 <body>
+<div id = "wrapper">
+    <div class="overlay"></div>
+
+    <!--    Sidebar    -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+        <ul class="nav sidebar-nav">
+            <li class="sidebar-categories">
+                <a href="#">
+                   Categories
+                </a>
+            </li>
+            <li>
+                <a href="#">Javascript</a>
+            </li>
+            <li>
+                <a href="#">PHP</a>
+            </li>
+            <li>
+                <a href="#">C+/C++</a>
+            </li>
+            <li>
+                <a href="#">Javascript</a>
+            </li>
+            <li>
+                <a href="#">HTML</a>
+            </li>
+            <li>
+                <a href="#">CSS</a>
+            </li>
+            <li>
+                <a href="#">C#</a>
+            </li>
+            <li>
+                <a href="#">Phyton</a>
+            </li>
+            <li>
+                <a href="#">Bootstrap</a>
+            </li>
+            <li>
+                <a href="#">Angular</a>
+            </li>
+            <li>
+                <a href="#">jQuery</a>
+            </li>
+            <li>
+                <a href="#">AJAX</a>
+            </li>
+            <li>
+                <a href="#">SQL</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- /#sidebar-wrapper -->
+
+    <!--  page content     -->
+
+        <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+            <span class="hamb-top"></span>
+            <span class="hamb-middle"></span>
+            <span class="hamb-bottom"></span>
+        </button>
+
     <header class="header-info">
-        <h1>> talk.in.code</h1>
-        <p>// the best place for developers</p>
-        <button id="show-form" class="btn btn-success btn-sm">
-            <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+        <h1>> talk.in.code
+            </h1>
+        <p>//The best place for developers</p>
+          <button id="show-form" class="btn btn-success btn-sm">
+            <span class="glyphicon glyphicon-menu-hamburger" ></span>
             login</button>
+
     </header>
 
     <div id="content">
@@ -29,18 +98,20 @@
             <aside id="aside"></aside>
         </div>
     </div>
-
     <footer class="footer">
         <div class="container">
             <p class="text-muted">Telerik Academy - JS Applications - Teamwork</p>
         </div>
     </footer>
 
+    <!-- /# page content -->
+
     <script src="./jspm_packages/system.js"></script>
     <script src="./js/jspm-config.js"></script>
     <script>
         System.import("main");
     </script>
+</div>
 </body>
 
 </html>
