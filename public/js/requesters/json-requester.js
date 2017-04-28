@@ -34,9 +34,14 @@ function put(url, options) {
     return send('PUT', url, options);
 }
 
+function del(url, options) {
+    return send('DELETE', url, options);
+}
+
 export {
     send,
     get,
     post,
-    put
+    put,
+    del
 };
