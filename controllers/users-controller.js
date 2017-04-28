@@ -10,7 +10,7 @@ module.exports = function(db) {
     function generateAuthKey(userId) {
         // TODO: validate Id
         let authKey = keygen._({
-            specials: true,
+            specials: false,
             length: AUTH_KEY_LENGTH
         });
 
@@ -34,6 +34,9 @@ module.exports = function(db) {
                 return {
                     username: user.username,
                     email: user.email,
+                    posts: user.posts,
+                    comments: user.comments,
+                    credential: user.credential,
                     id: user.id
                 };
             }).value();
@@ -54,14 +57,14 @@ module.exports = function(db) {
             return;
         }
 
-        // TODO: implement validation
+        /*// TODO: implement validation
         let error = validate(user);
 
         if (error) {
             res.status(400)
                 .json(error.message);
             return;
-        }
+        }*/
 
         let dbUser = db.get('users').find({
             usernameToLower: user.username.toLowerCase()
@@ -92,7 +95,7 @@ module.exports = function(db) {
     // verify and return authKey for a user 
     function put(req, res) {
         let reqUser = req.body;
-        let user = db.get('users').find({
+        let user = db.get("users").find({
             usernameToLower: reqUser.username.toLowerCase()
         }).value();
         if (!user || user.passHash !== reqUser.passHash) {
@@ -108,14 +111,31 @@ module.exports = function(db) {
         res.json({
             result: {
                 username: user.username,
-                authKey: user.authKey
+                authKey: user.authKey,
+                credential: user.credential
             }
         });
+    }
+
+    ////// DELETE \\\\\\
+    function deleteUser(req, res) {
+        let user = req.user;
+
+        if (!user || user.credential !== "admin") {
+            res.status(401)
+                .json("Unauthorized user!");
+            return;
+        }
+
+        db.get("users")
+            .remove({ id: req.params.id })
+            .write();
     }
 
     return {
         get,
         post,
         put,
+        deleteUser
     };
 }
