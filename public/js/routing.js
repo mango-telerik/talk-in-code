@@ -9,6 +9,7 @@ var sammyApp = Sammy('#content', function() {
 
     this.get('#/register', context => context.redirect('#/sign-up'));
     this.get('#/users/register', context => context.redirect('#/sign-up'));
+    this.get('#/posts/add', context =>loader.loadCreatePost(context));
 });
 
 export { sammyApp };

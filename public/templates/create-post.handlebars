@@ -1,0 +1,19 @@
+<div class="new-post-block">
+    <h2 id="editor-title">New post</h2>
+    <form id="post-form">
+        <ul class="title-author">
+            <li class="single-element-form">
+                <h1 class="title-form">{{title}}</h1>
+                <input type="text" value="" placeholder="Title" id="tb-thread-title"/>
+            </li>
+            <li class="single-element-form">
+                <h1 class="title-form">{{author}}</h1>
+                <input type="text" value="" placeholder="author" id="author" disabled>
+            </li>
+        </ul>
+        <textarea name = 'content' class="content-field" placeholder="Content" id="post-content"></textarea>
+
+        <br>
+        <button type="button" id="create-new-post-request-button">Publish</button>
+    </form>
+</div>

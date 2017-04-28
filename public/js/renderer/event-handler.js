@@ -68,6 +68,9 @@ function signIn(context) {
         //     $("#show-form").fadeIn();
         // })
     })
+    $("body").on("click", "#add-new-thread", () => {
+        console.log(5);
+    })
 }
 
 function signOut(context) {
@@ -131,7 +134,27 @@ function deleteUser(context) {
             });
     });
 }
+function publish(context) {
+    $("body").on("click", "#create-new-post-request-button", function() {
+        const title = $("#tb-thread-title").val(),
+            text = $("#post-content").val();
+        const user = new User(username, password, email);
 
+        data.post(user);
+            // .then(function() {
+            //     toastr.success("User registered!");
+            //     setTimeout(function() {
+            //         context.redirect("#/");
+            //         document.location.reload(true);
+            //     }, 1000);
+            // }, function(err) {
+            //     if (typeof err === "object") {
+            //         err = err.responseText;
+            //     }
+            //     toastr.error(err);
+            //});
+    });
+}
 export {
     toggleMenu,
     signIn,

@@ -75,6 +75,10 @@ function currentUser() {
     return !!localStorage.getItem(USERNAME_LOCAL_STORAGE_KEY) &&
         !!localStorage.getItem(AUTH_KEY_LOCAL_STORAGE_KEY);
 }
+function post(user){
+    console.log(USERNAME_LOCAL_STORAGE_KEY);
+    return USERNAME_LOCAL_STORAGE_KEY;
+}
 
 function usersGet() {
     var options = {
@@ -87,6 +91,8 @@ function usersGet() {
             return res.result;
         });
 }
+
+
 
 function userDelete(username) {
     usersGet()

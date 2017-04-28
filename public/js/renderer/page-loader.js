@@ -74,7 +74,7 @@ function loadLoginMenu(context) {
 
 function loadRegisterMenu(context) {
     $("#login-panel").hide();
-    $("#register-panel").show()
+    $("#register-panel").show();
     return context;
 }
 
@@ -95,10 +95,34 @@ function loadUsersList(context) {
                 })
         })
 }
+        function loadCreatePost(context) {
+
+            templates.get("create-post")
+                .then(template => {
+                    context
+                        .$element()
+                        .find("#main-content")
+                        .html(template);
+                    return context;
+                });
+        }
+
+//             $('#create-new-post-request-button').on('click', function() {
+//                 var text = $('#tb-msg-text').val();
+//                 data.threads.addMessage(threadId, {
+//                     text
+//                 }).then(function(res) {
+//                     console.log(res);
+//                     context.redirect('#/threads/' + threadId);
+//                 });
+//
+//
+// }
 
 export {
     loadHomePage,
     loadRegisterMenu,
     loadUsersList,
-    loadLoginMenu
+    loadLoginMenu,
+    loadCreatePost
 };

@@ -413,7 +413,7 @@ li {
     z-index: 100;
 }
 
-.header-info>h1 {
+.header-info>a>h1 {
     display: inline-block;
     font-family: consolas, sans-serif;
     font-size: 20px;
@@ -456,6 +456,14 @@ h4 {
     bottom: 0;
 }
 
+.add-new-thread{
+    float:right;
+    display: block;
+    margin-top: 10px;
+}
+#forum-title{
+    text-decoration: none;
+}
 .footer {
     position: fixed;
     bottom: 0;
