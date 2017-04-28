@@ -103,11 +103,54 @@ function userDelete(username) {
         })
 }
 
+function getPosts() {
+    // hardcoded posts for test
+    const posts = [{
+            title: "What is Javascript",
+            author: { username: "admin" },
+            category: "JavaScript",
+            content: "JavaScript is a programming language that allows you to implement complex things on web pages — every time a web page does more than just sit there and display static information for you to look at — displaying timely content updates, or interactive maps, or animated 2D/3D graphics, or scrolling video jukeboxes, etc.",
+            comments: [{
+                    author: { username: "gosho" },
+                    content: "I like your post very much!"
+                },
+                {
+                    author: { username: "pesho" },
+                    content: "This is a stupid post!"
+                }
+            ],
+            likes: 12,
+        },
+        {
+            title: "Some info about CSS",
+            author: { username: "gosho" },
+            category: "CSS",
+            content: "Cascading Style Sheets (CSS) is a style sheet language used for describing the presentation of a document written in a markup language.[1] Although most often used to set the visual style of web pages and user interfaces written in HTML and XHTML, the language can be applied to any XML document, including plain XML, SVG and XUL, and is applicable to rendering in speech, or on other media. Along with HTML and JavaScript, CSS is a cornerstone technology used by most websites to create visually engaging webpages, user interfaces for web applications, and user interfaces for many mobile applications.",
+            comments: [{
+                    author: { username: "admin" },
+                    content: "Stop writing useless posts!"
+                },
+                {
+                    author: { username: "pesho" },
+                    content: "This is the best post I've read!"
+                },
+                {
+                    author: { username: "ivan" },
+                    content: "Just spamming!"
+                }
+            ],
+            likes: 31,
+        }
+    ]
+    return Promise.resolve(posts);
+}
+
 export {
     register,
     signIn,
     signOut,
     currentUser,
     usersGet,
-    userDelete
+    userDelete,
+    getPosts
 };

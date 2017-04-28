@@ -29,7 +29,19 @@
       "comments": 0,
       "credential": "regular",
       "usernameToLower": "gosho",
-      "id": 1493337247090
+      "id": 1493337247090,
+      "authKey": "14933372470909AmQYsJAPpboIMEIlmposbVWxd22Ly"
+    },
+    {
+      "username": "tosho",
+      "passHash": "40cc73d8ee1b136412cf3e4d0992508d65af8d1f",
+      "email": "tosho@bbb.cc",
+      "posts": 0,
+      "comments": 0,
+      "credential": "regular",
+      "usernameToLower": "tosho",
+      "id": 1493361391744,
+      "authKey": "1493361391744l7J9nEMO0eOToAY0RFUAYBGz2a45r4"
     }
   ],
   "posts": []
