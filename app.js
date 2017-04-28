@@ -1,7 +1,7 @@
-const express = require("express")
-const low = require("lowdb")
-const bodyParser = require('body-parser')
-const fileAsync = require("lowdb/lib/storages/file-async")
+const express = require("express");
+const low = require("lowdb");
+const bodyParser = require('body-parser');
+const fileAsync = require("lowdb/lib/storages/file-async");
 
 // Create server
 const app = express();

@@ -59,7 +59,7 @@ function signIn(context) {
         // $("#login-panel").slideUp(400, () => {
         //     $("#show-form").fadeIn();
         // })
-    })
+    });
 
     $("body").on("click", "#btn-go-home", () => {
         $("#btn-go-home").hide();
@@ -67,9 +67,9 @@ function signIn(context) {
         // $("#login-panel").slideUp(400, () => {
         //     $("#show-form").fadeIn();
         // })
-    })
+    });
     $("body").on("click", "#add-new-thread", () => {
-        console.log(5);
+       // console.log(5);
     })
 }
 
@@ -140,7 +140,7 @@ function publish(context) {
             text = $("#post-content").val();
         const user = new User(username, password, email);
 
-        data.post(user);
+       // data.post(user);
             // .then(function() {
             //     toastr.success("User registered!");
             //     setTimeout(function() {
@@ -154,11 +154,11 @@ function publish(context) {
             //     toastr.error(err);
             //});
     });
-}
+ }
 export {
     toggleMenu,
     signIn,
     signOut,
     register,
-    deleteUser
+    deleteUser,
 }

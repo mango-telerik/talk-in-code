@@ -67,7 +67,7 @@ function loadRegisterMenu(context) {
 
 function loadLoginMenu(context) {
     $("#register-panel").hide();
-    $("#login-panel").show()
+    $("#login-panel").show();
     return context;
 }
 

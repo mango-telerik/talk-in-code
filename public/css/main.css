@@ -461,6 +461,17 @@ h4 {
     display: block;
     margin-top: 10px;
 }
+#editor-title{
+  text-align: center;
+}
+#tb-thread-title{
+width: 500px;
+    font-size: 17px;
+}
+div.justified {
+    display: flex;
+    justify-content: center;
+}
 #forum-title{
     text-decoration: none;
 }
