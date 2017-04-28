@@ -1,7 +1,7 @@
 function validateString(str, min, max, chars) {
     if (typeof str !== 'string' || str.length < min || str.length > max) {
         return {
-            message: `Invalid: Length must be between ${min} and ${max}`
+            message: `Invalid username: Length must be between ${min} and ${max}`
         };
     }
     if (chars) {
@@ -10,7 +10,7 @@ function validateString(str, min, max, chars) {
                 return chars.indexOf(char) < 0;
             })) {
             return {
-                message: `Invalid: Chars can be ${chars}`
+                message: `Invalid username: Chars can be ${chars}`
             };
         }
     }
@@ -19,14 +19,14 @@ function validateString(str, min, max, chars) {
 function validateEmail(email) {
     if (!email || email.length === 0) {
         return {
-            message: 'Invalid input: email cannot be empty'
+            message: 'Invalid email: Email cannot be empty'
         };
     }
     //copied from http://emailregex.com/
     var pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!pattern.test(email)) {
         return {
-            message: 'Invalid email'
+            message: 'Invalid email: Please use name@url.ext pattern'
         };
     }
 }
@@ -45,8 +45,18 @@ function validateUrl(url) {
     }
 }
 
+function validatePassword(password) {
+    if (typeof password !== "string" || password.length === 0) {
+        const message = "Invalid password: Password cannot be empty!";
+        return {
+            message
+        };
+    }
+}
+
 export {
     validateString,
     validateEmail,
-    validateUrl
+    validateUrl,
+    validatePassword
 };

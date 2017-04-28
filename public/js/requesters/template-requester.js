@@ -1,6 +1,3 @@
-import * as handlebars from "handlebars";
-import $ from "jquery";
-
 const cache = {};
 
 function get(name) {
@@ -11,7 +8,7 @@ function get(name) {
         }
         let url = `templates/${name}.handlebars`;
         $.get(url, function(html) {
-            let template = handlebars.compile(html);
+            let template = Handlebars.compile(html);
             cache[name] = template;
             resolve(template);
         });

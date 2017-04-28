@@ -1,5 +1,3 @@
-import $ from "jquery";
-
 function send(method, url, options) {
     options = options || {};
 

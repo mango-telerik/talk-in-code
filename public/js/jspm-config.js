@@ -72,21 +72,30 @@ System.config({
         "npm:vm-browserify@0.0.4": {
             "indexof": "npm:indexof@0.0.1"
         },
+
         // bower modules
-        "jquery": "../bower_components/jquery/dist/jquery.min.js",
-        "sammy": "../bower_components/sammy/lib/sammy.js",
-        "toastr": "../bower_components/toastr/toastr.min.js",
-        "jquery-ui": "../bower_components/jquery-ui/jquery-ui.min.js",
-        "handlebars": "../bower_components/handlebars/handlebars.min.js",
-        "moment": "../bower_components/moment/moment.js",
-        "crypto": "../bower_components/crypto-js/crypto-js.js",
+        //"jquery": "../bower_components/jquery/dist/jquery.min.js",
+        //"sammy": "../bower_components/sammy/lib/sammy.js",
+        //"toastr": "../bower_components/toastr/toastr.min.js",
+        //"jquery-ui": "../bower_components/jquery-ui/jquery-ui.min.js",
+        //"handlebars": "../bower_components/handlebars/handlebars.min.js",
+        //"moment": "../bower_components/moment/moment.js",
+        //"crypto": "../bower_components/crypto-js/crypto-js.js",
+
         // local modules
         "main": "./js/main.js",
-        "validator": "./js/validator.js",
+        "router": "./js/routing.js",
+        "validator": "./js/helpers/validator.js",
+        "constants": "./js/helpers/constants.js",
         "data": "./js/data.js",
-        "requester": "./js/json-requester.js",
-        "templates": "./js/templates.js",
-        "users": "./js/controllers/users.js",
-        "home": "./js/controllers/home.js"
+        "requester": "./js/requesters/json-requester.js",
+        "template-requester": "./js/requesters/template-requester.js",
+        "page-loader": "./js/renderer/page-loader.js",
+        "event-handler": "./js/renderer/event-handler.js",
+        "userObj": "./js/models/user",
+        "elementObj": "./js/models/element.js",
+        "categoryObj": "./js/models/category.js",
+        "postObj": "./js/models/post.js",
+        "commentObj": "./js/models/comment.js"
     }
 });
