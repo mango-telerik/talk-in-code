@@ -118,7 +118,7 @@ function deleteUser(context) {
         let username = $(ev.target).closest("tr").children("td.table-username").text();
         data.userDelete(username)
             .then(function() {
-                toastr.error("User deleted!");
+                toastr.success("User " + username + " deleted!");
                 setTimeout(function() {
                     context.redirect("#/users");
                     document.location.reload(true);
