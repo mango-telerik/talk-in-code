@@ -17,7 +17,7 @@ module.exports = function(db) {
         return userId + authKey;
     }
 
-    ////// GET \\\\\\
+    //------ GET -------
     // returns to server all users from db
     function get(req, res) {
 
@@ -46,7 +46,7 @@ module.exports = function(db) {
         });
     }
 
-    ////// POST \\\\\\
+    //------ POST ------
     // adds a new user to db
     function post(req, res) {
         let user = req.body;
@@ -91,7 +91,7 @@ module.exports = function(db) {
         });
     }
 
-    ////// PUT \\\\\\
+    //------ PUT -------
     // verify and return authKey for a user 
     function put(req, res) {
         let reqUser = req.body;
@@ -117,7 +117,7 @@ module.exports = function(db) {
         });
     }
 
-    ////// DELETE \\\\\\
+    //------ DELETE -------
     function deleteUser(req, res) {
         let user = req.user;
 
@@ -127,9 +127,14 @@ module.exports = function(db) {
             return;
         }
 
+        let deletedUser = db.get("users").find({ id: +req.params.id }).value().username;
         db.get("users")
-            .remove({ id: req.params.id })
+            .remove({ id: +req.params.id })
             .write();
+
+        res.status(200)
+            .json("Success! User " + deletedUser + " is deleted");
+        return;
     }
 
     return {
@@ -138,4 +143,4 @@ module.exports = function(db) {
         put,
         deleteUser
     };
-}
+};

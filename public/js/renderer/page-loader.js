@@ -87,13 +87,12 @@ function loadUsersList(context) {
                         .$element()
                         .find("#main-content")
                         .html(template({ data }));
-                    console.log(data);
                     return context;
                 })
                 .then(context => {
                     createHandler.deleteUser(context);
-                })
-        })
+                });
+        });
 }
         function loadCreatePost(context) {
 

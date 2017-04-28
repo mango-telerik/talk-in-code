@@ -32,22 +32,23 @@ app.post("/api/users", usersController.post);
 app.put("/api/auth", usersController.put);
 app.delete("/api/users/:id", usersController.deleteUser);
 
-/* // Posts
+// Posts
 const postsController = require("./controllers/posts-controller")(db);
 app.get("/api/posts", postsController.get);
 app.post("/api/posts", postsController.post);
 app.put("/api/posts/:id", postsController.put);
 app.delete("/api/posts/:id", postsController.deletePost);
 
+
 // Comments
 const commentsController = require("./controllers/comments-controller")(db);
 app.get("/api/posts/:id/messages", commentsController.get);
 app.post("/api/posts/:id/messages", commentsController.post);
-app.delete("/api/posts/:id/messages/:id", commentsController.deleteComm);
+app.delete("/api/posts/:id/messages/:mesid", commentsController.deleteComm);
 
 // Categories
 const categoryController = require("./controllers/category-controller")(db);
-app.get("/api/categories", categoryController.get); */
+app.get("/api/categories", categoryController.get);
 
 // Init
 let port = 3000;

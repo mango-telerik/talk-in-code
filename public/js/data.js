@@ -54,8 +54,8 @@ function signIn(user) {
     };
 
     return jsonRequester.put('api/auth', options)
-        .then(function(resp) {
-            var user = resp.result;
+        .then(res => {
+            var user = res.result;
             localStorage.setItem(USERNAME_LOCAL_STORAGE_KEY, user.username);
             localStorage.setItem(AUTH_KEY_LOCAL_STORAGE_KEY, user.authKey);
             return user;
@@ -92,18 +92,22 @@ function usersGet() {
 
 
 function userDelete(username) {
-    usersGet()
+    return usersGet()
         .then(res => {
-            return res.result.find(x => x.username === username).id;
+            let id = res.find(x => x.username === username).id;
+            return id;
         })
         .then(id => {
-            var options = {
+            let options = {
                 headers: {
                     'x-auth-key': localStorage.getItem(AUTH_KEY_LOCAL_STORAGE_KEY)
                 }
             };
-            return jsonRequester.delete('api/users' + id, options);
+            return jsonRequester.del('api/users/' + id, options);
         })
+        .then(res => {
+            return res.result;
+        });
 }
 
 function getPosts() {
