@@ -89,48 +89,49 @@
             login</button>
 
     </header>
+<!-- login-panel  -->
 
-    <nav class="main-nav-panel" id="login-panel">
-        <div id="container-sign-in">
-            <h4>login or register</h4>
+    <div id="content">
+        <nav class="main-nav-panel" id="login-panel">
+            <div id="container-sign-in">
+                <h4>login or register</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="tb-username">Username:</label>
+                        <input type="text" placeholder="username" id="tb-username" class="form-control">
+                        <label for="tb-password">Password:</label>
+                        <input type="password" placeholder="password" id="tb-password" class="form-control">
+                    </div>
+                    <button id="btn-sign-in" class="btn btn-default">login</button>
+                    <a href="#/users/register" id="btn-register-new" class="btn btn-primary">register</a>
+                </form>
+            </div>
+            <div id="container-sign-out">
+                <h4>hello user</h4>
+                <button id="btn-sign-out" class="btn btn-default">logout</button>
+                <a href="#/users" id="btn-list-users" class="btn btn-info">list users</a>
+                <a href="#/home" id="btn-go-home" class="btn btn-info">back to home page</a>
+            </div>
+            <button id="hide-form" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> hide</button>
+        </nav>
+        <nav class="main-nav-panel" id="register-panel">
+            <h4>register a new user</h4>
             <form>
                 <div class="form-group">
-                    <label for="tb-username">Username:</label>
-                    <input type="text" placeholder="username" id="tb-username" class="form-control">
-                    <label for="tb-password">Password:</label>
-                    <input type="password" placeholder="password" id="tb-password" class="form-control">
+                    <label for="tb-reg-email">Email address</label>
+                    <input type="email" class="form-control" id="tb-reg-email" aria-describedby="emailHelp" placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
-                <button id="btn-sign-in" class="btn btn-default">login</button>
-                <a href="#/users/register" id="btn-register-new" class="btn btn-primary">register</a>
+                <div class="form-group">
+                    <label for="tb-reg-username">Username:</label>
+                    <input type="text" placeholder="John" id="tb-reg-username" class="form-control">
+                    <label for="tb-reg-password">Password:</label>
+                    <input type="password" placeholder="1234" id="tb-reg-password" class="form-control">
+                </div>
+                <button id="btn-register" class="btn btn-primary">register</button>
+                <a href="#/home/login" id="btn-back" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> back</a>
             </form>
-        </div>
-        <div id="container-sign-out">
-            <h4>hello user</h4>
-            <button id="btn-sign-out" class="btn btn-default">logout</button>
-            <a href="#/users" id="btn-list-users" class="btn btn-info">list users</a>
-            <a href="#/home" id="btn-go-home" class="btn btn-info">back to home page</a>
-        </div>
-        <button id="hide-form" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> hide</button>
-    </nav>
-    <nav class="main-nav-panel" id="register-panel">
-        <h4>register a new user</h4>
-        <form>
-            <div class="form-group">
-                <label for="tb-reg-email">Email address</label>
-                <input type="email" class="form-control" id="tb-reg-email" aria-describedby="emailHelp" placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div class="form-group">
-                <label for="tb-reg-username">Username:</label>
-                <input type="text" placeholder="John" id="tb-reg-username" class="form-control">
-                <label for="tb-reg-password">Password:</label>
-                <input type="password" placeholder="1234" id="tb-reg-password" class="form-control">
-            </div>
-            <button id="btn-register" class="btn btn-primary">register</button>
-            <a href="#/home/login" id="btn-back" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> back</a>
-        </form>
-    </nav>
-    <div id="content">
+        </nav>
         <div class="container-fluid" id="form-field">
             <main id="main-content">
 
