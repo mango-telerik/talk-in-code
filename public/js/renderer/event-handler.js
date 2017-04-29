@@ -147,27 +147,27 @@ function publish(context) {
        // text = $('#post-content-field').tinyMCE().getContent();
 
         const
-         //   title = $("#tb-thread-title").text(),
-            text = $("#post-content-field").text(),
+            text = "New pst",
+                //$("#post-content-field").text(),
             author = "Pesho",
-            likes = 5,
+            likes = 0,
             category = "2";
-        console.log(5);
-        //console.log(title);
-        const post = new Post(author, text, likes, title, category);
-        data.postPost(post)
-            .then(function () {
-                toastr.success("You have published new post!");
-                setTimeout(function () {
-                    context.redirect("#/");
-                    document.location.reload(true);
-                }, 1000);
-            }, function (err) {
-                if (typeof err === "object") {
-                    err = err.responseText;
-                }
-                toastr.error(err);
-            });
+
+        const newPost = new Post(author, text, likes, title, category);
+        context.redirect("#/");
+        // data.postPost(newPost)
+        //     .then(function () {
+        //         toastr.success("You have published new post!");
+        //         setTimeout(function () {
+        //      context.redirect("#/");
+        //             document.location.reload(true);
+        //         }, 1000);
+        //     }, function (err) {
+        //         if (typeof err === "object") {
+        //             err = err.responseText;
+        //         }
+        //         toastr.error(err);
+        //     });
         });
 }
 export {
