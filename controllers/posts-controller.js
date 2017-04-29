@@ -15,11 +15,10 @@ module.exports = function(db) {
             .map(function(post) {
                 return {
                     title: post.title,
-                    author: { username: post.author.username },
+                    author: post.author,
+                    text: post.text,
                     category: post.category,
-                    comments: post.comments,
-                    lies: post.likes,
-                    id: post.id
+                    likes: post.likes,
                 };
             }).value();
 

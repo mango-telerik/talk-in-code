@@ -97,3 +97,6 @@ export default class User {
         return CryptoJS.SHA1(this.username + password).toString();
     }
 }
+function userNameGet(){
+    return localStorage.getItem(USERNAME_LOCAL_STORAGE_KEY);
+}

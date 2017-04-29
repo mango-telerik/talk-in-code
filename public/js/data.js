@@ -1,6 +1,7 @@
 import * as validator from "validator";
 import * as jsonRequester from "requester";
 import User from "userObj";
+import Post from "postObj";
 import {
     USERNAME_CHARS,
     USERNAME_MIN_LENGTH,
@@ -80,7 +81,8 @@ function currentUser() {
 function usersGet() {
     var options = {
         headers: {
-            'x-auth-key': localStorage.getItem(AUTH_KEY_LOCAL_STORAGE_KEY)
+            'x-auth-key': localStorage.getItem(AUTH_KEY_LOCAL_STORAGE_KEY),
+            'author': localStorage.getItem(USERNAME_LOCAL_STORAGE_KEY)
         }
     };
     return jsonRequester.get('api/users', options)
@@ -88,7 +90,6 @@ function usersGet() {
             return res.result;
         });
 }
-
 
 
 function userDelete(username) {
@@ -109,6 +110,69 @@ function userDelete(username) {
             return res.result;
         });
 }
+
+function postPost(postedContent) {
+    var p = new Promise(function(resolve, reject) {
+        var body = {
+
+            'title': postedContent.title,
+            'author': localStorage.getItem(USERNAME_LOCAL_STORAGE_KEY),
+            'text': postedContent.text,
+            'category': postedContent.category,
+            // comments: post.comments,;
+            'likes': postedContent.likes,
+            //id: post.id
+        };
+        console.log(body);
+        $.ajax({
+            url: 'api/posts/:id',
+            method: 'POST',
+            data: JSON.stringify(body),
+            headers: {
+                'title': postedContent.title,
+                'author': postedContent.author,
+                'text': postedContent.text,
+                'category': postedContent.category,
+                // comments: post.comments,;
+                'likes': postedContent.likes,
+
+            },
+            contentType: 'application/json',
+            success: function(res) {
+                resolve(res);
+            }
+        })
+    });
+    return p;
+}
+// function postPost(postedContent){
+//     var options = {
+//         headers: {
+//             'title':postedContent.title,
+//             'author': postedContent.author,
+//             'text': postedContent.text,
+//             'category': postedContent.category,
+//             // comments: post.comments,;
+//             'likes': postedContent.likes,
+//             // id: post.id
+//         }
+//     };
+//     return jsonRequester.post('api/posts', options)
+//         .then(function(resp) {
+//             return resp.result;
+//           //  return {
+//
+//               //   title: resp.result.title,
+//               //   author: resp.result.author.username,
+//               //   category: resp.result.category,
+//               //   text: resp.result.text,
+//               // //  comments: resp.result.comments,
+//               // //  likes: resp.result.likes,
+//               //   id:resp.result.id
+//
+//           //  };
+//         });
+// }
 
 function getPosts() {
     // hardcoded posts for test
@@ -148,7 +212,7 @@ function getPosts() {
             ],
             likes: 31,
         }
-    ]
+    ];
     return Promise.resolve(posts);
 }
 
@@ -159,5 +223,7 @@ export {
     currentUser,
     usersGet,
     userDelete,
-    getPosts
+    getPosts,
+    postPost,
+
 };

@@ -33,5 +33,13 @@
       "authKey": "1493386265286i3ua1hhWtQcsv4ZDvgdeu1oyrvEJgm"
     }
   ],
-  "posts": []
+  "posts": [
+    {
+      "author": "Lili",
+      "title": "What's up today",
+      "likes": 25,
+      "content": "ddddddddddddddddddddddddddd",
+      "category": "20"
+    }
+  ]
 }

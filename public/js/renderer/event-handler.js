@@ -1,5 +1,6 @@
 import * as data from "data";
 import User from "userObj";
+import Post from "postObj";
 
 function toggleMenu() {
     $("body").on("click", "#show-form", () => $("#login-panel").slideDown(400, () => {
@@ -13,7 +14,7 @@ function toggleMenu() {
         $("#container-sign-in").hide();
     } else {
         $("#container-sign-out").hide();
-    }
+}
 }
 
 function signIn(context) {
@@ -68,9 +69,7 @@ function signIn(context) {
         //     $("#show-form").fadeIn();
         // })
     });
-    $("body").on("click", "#add-new-thread", () => {
-       // console.log(5);
-    })
+
 }
 
 function signOut(context) {
@@ -135,30 +134,47 @@ function deleteUser(context) {
     });
 }
 function publish(context) {
-    $("body").on("click", "#create-new-post-request-button", function() {
-        const title = $("#tb-thread-title").val(),
-            text = $("#post-content").val();
-        const user = new User(username, password, email);
+    $("body").on("click", "#create-new-post-request-button", function(ev){
+        var title;
 
-       // data.post(user);
-            // .then(function() {
-            //     toastr.success("User registered!");
-            //     setTimeout(function() {
-            //         context.redirect("#/");
-            //         document.location.reload(true);
-            //     }, 1000);
-            // }, function(err) {
-            //     if (typeof err === "object") {
-            //         err = err.responseText;
-            //     }
-            //     toastr.error(err);
-            //});
-    });
- }
+        $( "input" )
+            .keyup(function() {
+                title = $( this ).val();
+                $( "#tb-thread-title" ).text( title );
+            })
+            .keyup();
+        console.log(title);
+       // text = $('#post-content-field').tinyMCE().getContent();
+
+        const
+         //   title = $("#tb-thread-title").text(),
+            text = $("#post-content-field").text(),
+            author = "Pesho",
+            likes = 5,
+            category = "2";
+        console.log(5);
+        //console.log(title);
+        const post = new Post(author, text, likes, title, category);
+        data.postPost(post)
+            .then(function () {
+                toastr.success("You have published new post!");
+                setTimeout(function () {
+                    context.redirect("#/");
+                    document.location.reload(true);
+                }, 1000);
+            }, function (err) {
+                if (typeof err === "object") {
+                    err = err.responseText;
+                }
+                toastr.error(err);
+            });
+        });
+}
 export {
     toggleMenu,
     signIn,
     signOut,
     register,
     deleteUser,
+    publish
 }

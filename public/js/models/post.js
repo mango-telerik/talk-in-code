@@ -1,17 +1,30 @@
-export default class Post extends Element {
-    constructor(author, content, likes, title, category) {
-        super(author, content, likes);
+import * as validator from "validator";
+import{
+    TITLE_CHARS,
+    TITLE_MIN_LENGTH,
+    TITLE_MAX_LENGTH,
+} from "constants";
+export default class Post {
+    constructor(author, text, likes, title, category) {
+       // super(author, text, likes);
         this.title = title;
+        this.author = author;
+        this.text = text;
+        this.likes = likes;
+       // this.id=0;
         this.category = category;
+       // this.comments = 0;
     }
+
 
     get title() {
         return this._title;
     }
 
     set title(val) {
-        // validate
-        this._title = val;
+        console.log(val);
+
+            this._title = val;
     }
 
     get category() {
@@ -21,5 +34,33 @@ export default class Post extends Element {
     set category(val) {
         // validate
         this._category = val;
+    }
+    get author() {
+        return this._author;
+    }
+
+    set author(val) {
+        // validate
+        this._author = val;
+    }
+
+    get text() {
+
+        return this._text;
+    }
+
+    set text(val) {
+        // validate
+        console.log(val);
+        this._text = val;
+    }
+
+    get likes() {
+        return this._likes;
+    }
+
+    set likes(val) {
+        // validate
+        this._likes = val;
     }
 }

@@ -2,6 +2,7 @@ import * as templates from "template-requester";
 import * as createHandler from "event-handler";
 import * as data from "data";
 
+
 function loadHomePage(context) {
     /*templates.get("login")
         .then(template => {
@@ -95,15 +96,22 @@ function loadUsersList(context) {
         });
 }
         function loadCreatePost(context) {
+    const author = localStorage.getItem('signed-in-user-username');
+            data.usersGet()
+                .then(data => {
+                    templates.get("create-post")
+                        .then(function(template) {
+                            context
+                                .$element()
+                                .find("#main-content")
+                                .html(template({ data }));
+                            return context;
+                        })
+                        .then(context => {
+                            createHandler.publish(context);
+                        });
+                })
 
-            templates.get("create-post")
-                .then(template => {
-                    context
-                        .$element()
-                        .find("#main-content")
-                        .html(template);
-                    return context;
-                });
         }
 
 //             $('#create-new-post-request-button').on('click', function() {
