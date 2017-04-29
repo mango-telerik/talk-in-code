@@ -144,10 +144,10 @@ function publish(context) {
             })
             .keyup();
         console.log(title);
-       // text = $('#post-content-field').tinyMCE().getContent();
+        // text = $('#post-content-field').tinyMCE().getContent();
 
         const
-         //   title = $("#tb-thread-title").text(),
+            //   title = $("#tb-thread-title").text(),
             text = $("#post-content-field").text(),
             author = "Pesho",
             likes = 5,
@@ -168,7 +168,7 @@ function publish(context) {
                 }
                 toastr.error(err);
             });
-        });
+    });
 }
 export {
     toggleMenu,
