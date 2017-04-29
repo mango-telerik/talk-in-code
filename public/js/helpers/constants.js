@@ -3,7 +3,7 @@ const USERNAME_CHARS = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234
     USERNAME_MAX_LENGTH = 30,
     ADMINS = ["admin", "zach"],
     TITLE_CHARS = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890_.",
-    TITLE_MIN_LENGTH = 15,
+    TITLE_MIN_LENGTH = 3,
     TITLE_MAX_LENGTH = 45,
     CREDENTIAL = {
         ADMIN: "admin",

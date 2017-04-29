@@ -23,8 +23,12 @@ export default class Post {
 
     set title(val) {
         console.log(val);
-
+        const wrong = validator.validateString(val, TITLE_MIN_LENGTH, TITLE_MAX_LENGTH, TITLE_CHARS);
+        if (wrong) {
+            this.addError(wrong.message);
+        } else {
             this._title = val;
+        }
     }
 
     get category() {
