@@ -1,6 +1,7 @@
 import * as templates from "template-requester";
 import * as data from "data";
 import User from "userModel";
+import Post from "postModel";
 import { USERNAME_LOCAL_STORAGE } from "constants";
 
 const $content = $("#content");
@@ -167,6 +168,41 @@ let loader = {
                                    .html(template);
                                return context;
                      });
+        $("body").on("click", "#create-new-post-request-button", function(ev){
+            var title, category;
+            var content = "New pst";
+            const author = data.users.authUser();
+              const  likes=0;
+            $( "#tb-thread-title" )
+                .keyup(function() {
+                    title = $( this ).val();
+                })
+                .keyup();
+            console.log(title);
+            category=$("#tb-thread-category").val();
+            console.log(category);
+
+            // text = $('#post-content-field').tinyMCE().getContent();
+            //console.log(text);
+
+                //$("#post-content-field").text(),
+
+            const newPost = new Post(author, content, likes, title, category);
+            data.posts.addPost(newPost)
+                .then(function () {
+                    toastr.success("You have published new post!");
+                    setTimeout(function () {
+                 context.redirect("#/");
+                        document.location.reload(true);
+                    }, 1000);
+                }, function (err) {
+                    console.log(author);
+                    if (typeof err === "object") {
+                        err = err.responseText;
+                    }
+                    toastr.error(err);
+                });
+        });
     },
     loadCurrentPost: function(context, postid) {
 

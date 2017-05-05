@@ -9,9 +9,20 @@
                     <input type="text" value="" placeholder="Title" id="tb-thread-title"/></div>
             </li>
             <li class="single-element-form">
+                <h1 class="category-form">{{category}}</h1>
+                <div class="justified">
+                    <select id="tb-thread-category">
+                        <option value="JavaScript">JS</option>
+                        <option value="HTML">HTML</option>
+                        <option value="JAVA">JAVA</option>
+                        <option value="PHP">PHP</option>
+                    </select>
+                </div>
+            </li>
+            <li class="single-element-form">
                 <h1 class="title-form">{{author}}</h1>
 
-                <br/> <div class="justified">created by{{author}}</div>
+                <br/> <div class="justified">created by{{author.username}}</div>
                 <div class="justified">
                 <textarea name = 'content' class="content-field" placeholder="Content" id="post-content-field"></textarea>
                 </div>
@@ -20,7 +31,7 @@
 
         <br>
         <div class="justified">
-            <button type="button" id="create-new-post-request-button">Publish</button></div>
+            <button type="button" id="create-new-post-request-button" class="btn btn-primary">Publish</button></div>
     </form>
 </div>
 <script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=6ab5v9vrn0ox7oz8zwgdlo18wlbxwj76pvwott8ywmnlwdve'></script>

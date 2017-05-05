@@ -93,6 +93,10 @@ function currentUser() {
         !!localStorage.getItem(AUTH_KEY_LOCAL_STORAGE);
 }
 
+function authUser(){
+    return localStorage.getItem(USERNAME_LOCAL_STORAGE);
+}
+
 /* Posts */
 
 function addPost(reqPost) {
@@ -107,6 +111,7 @@ function addPost(reqPost) {
         data: {
             title: reqPost.title,
             author: { username: reqPost.author.username },
+                //.username },
             content: reqPost.content,
             category: reqPost.category,
             likes: 0
@@ -205,7 +210,8 @@ let users = {
     register,
     signIn,
     signOut,
-    currentUser
+    currentUser,
+    authUser
 }
 
 let posts = {
