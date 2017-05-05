@@ -32,7 +32,7 @@ var sammyApp = Sammy('#content', function() {
 
     this.get('#/home', context => loader.loadHomePage(context));
 
-    this.get('#/home/:category', context => loader.loadHomePage(context, this.params["category"]));
+    this.get('#/home/:category', function(context) { loader.loadHomePage(context, this.params["category"]); });
 
     this.get('#/login', context => loader.loadLoginMenu(context));
 
@@ -40,9 +40,9 @@ var sammyApp = Sammy('#content', function() {
 
     this.get('#/posts/add', context => loader.loadCreatePost(context));
 
-    this.get('#/posts/:postid', context => loader.loadCurrentPost(context, this.params["postid"]));
+    this.get('#/posts/:postid', function(context) { loader.loadCurrentPost(context, this.params["postid"]); });
 
-    this.get('#/posts/:postid/comment', context => loader.loadCreateComment(context, this.params["postid"]));
+    this.get('#/posts/:postid/comment', function(context) { loader.loadCreateComment(context, this.params["postid"]); });
 });
 
 let loader = {

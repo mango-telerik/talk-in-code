@@ -142,7 +142,7 @@ function getPosts(category) {
     }
 
     // if category provided create query
-    let query = category ? `?query={"category":${category}}` : "";
+    let query = category ? `?query={"category":"${category}"}` : "";
 
     // provide url
     const url = KINVEY.URLS.postsUrl + query;
