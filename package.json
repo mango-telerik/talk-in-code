@@ -5,6 +5,7 @@
     "main": "main.js",
     "scripts": {
         "test": "test",
+        "postinstall": "bower install",
         "start": "http-server -p 3000"
     },
     "repository": {

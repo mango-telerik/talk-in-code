@@ -53,18 +53,20 @@ let loader = {
                     $content
                         .find("#main-content")
                         .html(template({ info }));
-
-                    $("#all-posts-sortable").sortable();
-
+                })
+                .then(() => {
                     // TODO: separate logic on different file
+                    // $("#all-posts-sortable").sortable();
                     let signedUser = localStorage.getItem(USERNAME_LOCAL_STORAGE);
                     if (!signedUser) {
                         $("#login-button").show();
+                        $("#add-new-thread").hide();
                         $("#logout-button").hide();
                         $("#login-info").hide();
                     } else {
                         $("#logout-button").show();
                         $("#login-info").show();
+                        $("#add-new-thread").show();
                         $("#login-button").hide();
                     }
 
@@ -75,11 +77,11 @@ let loader = {
 
                     // click logout -> logouts and goes to home page
                     $("body").on("click", "#logout-button", () => {
-                        console.log(data);
+                        // console.log(data);
                         data.users.signOut()
-                            .then(() => {
-                                toastr.success("User " + signedUser + " signed out!", "Success!");
-                                context.redirect("#/home");
+                            .then((user) => {
+                                toastr.success("User " + user + " signed out!", "Success!");
+                                context.redirect("#/");
                                 $("#logout-button").fadeOut(100, function() {
                                     $("#login-button")
                                         .fadeIn(400);
@@ -88,9 +90,10 @@ let loader = {
                             })
                             .catch(err => {
                                 toastr.error(err, "Error!");
-                            })
+                            });
                     });
-                }))
+                })
+            );
     },
     loadLoginMenu: function(context) {
         templates.get("login")
@@ -115,7 +118,7 @@ let loader = {
                                 $("#login-info")
                                     .fadeIn(400)
                                     .html("Hello, " + user.username);
-                            })
+                            });
                         })
                         .then(() => {
                             context.redirect("#/home");
@@ -127,7 +130,7 @@ let loader = {
                             toastr.error(err, "Error!");
                         })
                 });
-            })
+            });
     },
     loadRegisterMenu: function(context) {
         templates.get("register")
@@ -161,42 +164,39 @@ let loader = {
     },
     loadCreatePost: function(context) {
         templates.get("create-post")
-                     .then(template => {
-                              context
-                                  .$element()
-                                   .find("#main-content")
-                                   .html(template);
-                               return context;
-                     });
-        $("body").on("click", "#create-new-post-request-button", function(ev){
+            .then(template => {
+                context
+                    .$element()
+                    .find("#main-content")
+                    .html(template);
+                return context;
+            });
+        $("body").on("click", "#create-new-post-request-button", function(ev) {
             var title, category;
             var content = "New pst";
-            const author = data.users.authUser();
-              const  likes=0;
-            $( "#tb-thread-title" )
+            const author = { "username": data.users.authUser() };
+            console.log(author);
+            const likes = 0;
+            $("#tb-thread-title")
                 .keyup(function() {
-                    title = $( this ).val();
+                    title = $(this).val();
                 })
                 .keyup();
             console.log(title);
-            category=$("#tb-thread-category").val();
+            category = $("#tb-thread-category").val();
             console.log(category);
-
-            // text = $('#post-content-field').tinyMCE().getContent();
-            //console.log(text);
-
-                //$("#post-content-field").text(),
-
+            content = tinymce.get("post-content-field").getContent();
+            console.log(content);
             const newPost = new Post(author, content, likes, title, category);
+            console.log(newPost);
             data.posts.addPost(newPost)
-                .then(function () {
+                .then(function() {
                     toastr.success("You have published new post!");
-                    setTimeout(function () {
-                 context.redirect("#/");
+                    setTimeout(function() {
+                        context.redirect("#/");
                         document.location.reload(true);
                     }, 1000);
-                }, function (err) {
-                    console.log(author);
+                }, function(err) {
                     if (typeof err === "object") {
                         err = err.responseText;
                     }
