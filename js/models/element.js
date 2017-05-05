@@ -31,7 +31,7 @@ export default class Element {
     set content(val) {
         let message = null;
         if (typeof val !== "string" || val.length < 3) {
-            message = "Post content must be text with more than 3 symbols!";
+            message = "Post content must contain more than 3 symbols!";
         } else {
             val
                 .replace(/&/g, "&amp;")
