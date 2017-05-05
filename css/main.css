@@ -15,7 +15,6 @@ html {
 }
 
 
-
 /*-------------------------------*/
 
 
@@ -391,6 +390,11 @@ div {
 ul,
 li {
     list-style: none;
+}
+
+.btn>a {
+    text-decoration: none;
+    color: inherit;
 }
 
 #content {
