@@ -27,14 +27,22 @@ const postid = data.posts._id;
     }
     var sammyApp = Sammy('#content', function () {
         this.get('/', context => context.redirect('#/home'));
+
         this.get('#/', context => context.redirect('#/home'));
+
         this.get('#/home', context => loader.loadHomePage(context));
-        this.get('#/home/:category', context => loader.loadHomePage(context, this.params["category"]));
+
+        this.get('#/home/:category', function(context) { loader.loadHomePage(context, this.params["category"]); });
+
         this.get('#/login', context => loader.loadLoginMenu(context));
+
         this.get('#/register', context => loader.loadRegisterMenu(context));
+
         this.get('#/posts/add', context => loader.loadCreatePost(context));
-        this.get('#/posts/:postid', context => loader.loadCurrentPost(context, postid));
-        this.get('#/posts/:postid/comment', context => loader.loadCreateComment(context, this.params["postid"]));
+
+        this.get('#/posts/:postid', function(context) { loader.loadCurrentPost(context, this.params["postid"]); });
+
+        this.get('#/posts/:postid/comment', function(context) { loader.loadCreateComment(context, this.params["postid"]); });
     });
     let loader = {
         loadHomePage: function (context, category) {
@@ -94,6 +102,50 @@ const postid = data.posts._id;
         loadLoginMenu: function (context) {
             templates.get("login")
                 .then(function (template) {
+
+toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": false,
+    "positionClass": "toast-top-center",
+    "preventDuplicates": true,
+    "onclick": null,
+    "showDuration": "50",
+    "hideDuration": "50",
+    "timeOut": "1200",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "slideDown",
+    "hideMethod": "slideUp"
+}
+
+var sammyApp = Sammy('#content', function() {
+    this.get('/', context => context.redirect('#/home'));
+
+    this.get('#/', context => context.redirect('#/home'));
+
+    this.get('#/home', context => loader.loadHomePage(context));
+
+    this.get('#/home/:category', function(context) { loader.loadHomePage(context, this.params["category"]); });
+
+    this.get('#/login', context => loader.loadLoginMenu(context));
+
+    this.get('#/register', context => loader.loadRegisterMenu(context));
+
+    this.get('#/posts/add', context => loader.loadCreatePost(context));
+
+    this.get('#/posts/:postid', function(context) { loader.loadCurrentPost(context, this.params["postid"]); });
+
+    this.get('#/posts/:postid/comment', function(context) { loader.loadCreateComment(context, this.params["postid"]); });
+});
+
+let loader = {
+    loadHomePage: function(context, category) {
+        data.posts.getPosts(category)
+            .then(info => templates.get("home")
+                .then(template => {
                     $content
                         .find("#main-content")
                         .html(template());
@@ -124,7 +176,8 @@ const postid = data.posts._id;
                                 toastr.error(err, "Error!");
                             })
                     });
-                });
+                }))
+
         },
         loadRegisterMenu: function (context) {
             templates.get("register")
