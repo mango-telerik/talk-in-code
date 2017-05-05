@@ -79,10 +79,11 @@ function signIn(user) {
 function signOut() {
     // remove user data from local storage
     var promise = new Promise(function(resolve, reject) {
+        let username = localStorage.getItem(USERNAME_LOCAL_STORAGE);
         localStorage.removeItem(USERNAME_LOCAL_STORAGE);
         localStorage.removeItem(AUTH_KEY_LOCAL_STORAGE);
         localStorage.removeItem(ID_LOCAL_STORAGE);
-        resolve();
+        resolve(username);
     });
     return promise;
 }
@@ -93,7 +94,7 @@ function currentUser() {
         !!localStorage.getItem(AUTH_KEY_LOCAL_STORAGE);
 }
 
-function authUser(){
+function authUser() {
     return localStorage.getItem(USERNAME_LOCAL_STORAGE);
 }
 
@@ -111,7 +112,6 @@ function addPost(reqPost) {
         data: {
             title: reqPost.title,
             author: { username: reqPost.author.username },
-                //.username },
             content: reqPost.content,
             category: reqPost.category,
             likes: 0
