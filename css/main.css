@@ -501,6 +501,12 @@ h3 {
     margin-top: 10px;
 }
 
+.add-new-comment {
+    float: right;
+    display: block;
+    margin-top: 10px;
+}
+
 #editor-title {
     text-align: center;
 }

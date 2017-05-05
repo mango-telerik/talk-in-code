@@ -206,6 +206,24 @@ function getPostComments(id) {
         })
 }
 
+function getSinglePost(id){
+    const options = {
+        headers: KINVEY.POSTS_HEADER
+    }
+
+    // if category provided create query
+    let query = `?query={"postid":${id}}`;
+
+    // provide url
+    const url = KINVEY.URLS.postsUrl + query;
+
+    // make the request and return promise
+    return jsonRequester.get(url, options)
+        .then(function(res) {
+            return res;
+        })
+}
+
 let users = {
     register,
     signIn,
@@ -218,7 +236,8 @@ let posts = {
     getPosts,
     addPost,
     addCommentToPost,
-    getPostComments
+    getPostComments,
+    getSinglePost
 }
 
 export {

@@ -205,14 +205,13 @@ let loader = {
         });
     },
         loadCurrentPost: function (context,postid) {
-            templates.get("current-post")
-                .then(template => {
-                    context
-                        .$element()
-                        .find("#main-content")
-                        .html(template);
-                    return context;
-                });
+            data.posts.getSinglePost(postid)
+                .then(templates.get("current-post")
+                    .then(template => {
+                        $content
+                            .find("#main-content")
+                            .html(template());
+                    }))
         },
         loadCreateComment: function (context, postid) {
         return 1;
