@@ -237,19 +237,7 @@ let loader = {
                                 $("#delete-post-" + signedUser).show();
                                 $("#delete-comment-" + signedUser).show();
                             }
-
-                            $("body").on("click", $(".delete-post"), function () {
-                                data.posts.deletePost(postid)
-                                    .then(function () {
-                                        toastr.success("Deleted!");
-                                        setTimeout(function() {
-                                            context.redirect("#/");
-                                            document.location.reload(true);
-                                        }, 1000);
-                                    })
-                            })
                         })
-
                     );
             });
     },
