@@ -238,9 +238,9 @@ let loader = {
                             let signedUser = localStorage.getItem(USERNAME_LOCAL_STORAGE);
                             if (signedUser) {
                                 $("#edit-post-" + signedUser).show();
-                                $("#edit-comment-" + signedUser).show();
+                                $(".edit-comment-" + signedUser).show();
                                 $("#delete-post-" + signedUser).show();
-                                $("#delete-comment-" + signedUser).show();
+                                $(".delete-comment-" + signedUser).show();
                             }
 
                         })
