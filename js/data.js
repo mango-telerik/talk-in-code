@@ -117,7 +117,7 @@ function addPost(reqPost) {
             likes: 0
         },
         headers: KINVEY.POSTS_HEADER
-    }
+    };
 
     // provide url
     const url = KINVEY.URLS.postsUrl;
@@ -229,6 +229,39 @@ function getSinglePost(id) {
         });
 }
 
+function editPost(reqPost) {
+    const message = reqPost.errors;
+    if (message) {
+        return Promise.reject(message.join("<br/>"));
+    }
+
+    // create options
+    const options = {
+        data: {
+            title: reqPost.title,
+            author: { username: reqPost.author.username },
+            content: reqPost.content,
+            category: reqPost.category,
+            likes: 0
+        },
+        headers: KINVEY.POSTS_HEADER
+    };
+
+    // provide url
+    const url = KINVEY.URLS.postsUrl;
+
+    // make request and return promise
+    return jsonRequester.post(url, options)
+        .then(function(res) {
+            return {
+                title: res.title,
+                author: res.author.username,
+                id: res._id
+            };
+        });
+
+}
+
 let users = {
     register,
     signIn,
@@ -242,7 +275,8 @@ let posts = {
     addPost,
     addCommentToPost,
     getPostComments,
-    getSinglePost
+    getSinglePost,
+    editPost
 }
 
 export {

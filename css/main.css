@@ -505,10 +505,11 @@ h3 {
 }
 
 .add-new-thread,
-.add-new-comment {
+.add-new-comment,
+.edit-post {
     float: right;
     display: block;
-    margin-top: 6px;
+    margin: 6px 0 0 5px;
     padding: 4px 15px;
     font-size: 1.8rem;
     font-weight: bold;
