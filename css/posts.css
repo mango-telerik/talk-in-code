@@ -29,7 +29,7 @@
 .section-title{
     background-color: lightgrey;
     border-radius: 25px 25px 0 0;
-    height: 35%;
+    height: 30%;
 }
 
 .new-post-block{
@@ -39,9 +39,20 @@
 }
 
 #lb-thread-category{
-    vertical-align: bottom;
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+#lb-thread-title{
+    margin-top: 15px;
+    margin-right: 5px;
 }
 
 .editor-title{
-    margin: 5px;
+    padding: 5px;
+    text-align: center;
+}
+
+#create-new-post-request-button{
+    font-size: 1.8rem;
 }
