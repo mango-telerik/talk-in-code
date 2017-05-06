@@ -262,6 +262,18 @@ function editPost(reqPost, id) {
 
 }
 
+function deletePost(id) {
+    const options = {
+        headers: KINVEY.USERS_HEADER_DELETE
+    };
+    let query = `?query={"postid":${id}}`;
+
+    const url = KINVEY.URLS.postsUrl + id;
+
+    return jsonRequester.del(url,options)
+
+}
+
 let users = {
     register,
     signIn,
@@ -276,7 +288,8 @@ let posts = {
     addCommentToPost,
     getPostComments,
     getSinglePost,
-    editPost
+    editPost,
+    deletePost
 }
 
 export {
