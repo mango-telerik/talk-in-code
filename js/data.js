@@ -229,7 +229,7 @@ function getSinglePost(id) {
         });
 }
 
-function editPost(reqPost) {
+function editPost(reqPost, id) {
     const message = reqPost.errors;
     if (message) {
         return Promise.reject(message.join("<br/>"));
@@ -246,9 +246,9 @@ function editPost(reqPost) {
         },
         headers: KINVEY.POSTS_HEADER
     };
-
+    let query = `?query={"_id":"${id}"}`;
     // provide url
-    const url = KINVEY.URLS.postsUrl;
+    const url = KINVEY.URLS.postsUrl+query;
 
     // make request and return promise
     return jsonRequester.post(url, options)
