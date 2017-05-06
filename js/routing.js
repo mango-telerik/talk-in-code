@@ -237,8 +237,7 @@ let loader = {
                                 $("#delete-post-" + signedUser).show();
                                 $("#delete-comment-" + signedUser).show();
                             }
-
-                            $("body").on("click", $(".delete-post"), function () {
+                            $(".delete-post").on("click", function () {
                                 data.posts.deletePost(postid)
                                     .then(function () {
                                         toastr.success("Deleted!");
@@ -248,9 +247,12 @@ let loader = {
                                         }, 1000);
                                     })
                             })
+
                         })
 
+
                     );
+
             });
     },
     loadCreateComment: function(context, postid) {
