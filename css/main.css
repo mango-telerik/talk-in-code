@@ -506,13 +506,24 @@ h3 {
 
 .add-new-thread,
 .add-new-comment,
-.edit-post {
+.edit-post,
+.delete-post {
     float: right;
     display: block;
     margin: 6px 0 0 5px;
     padding: 4px 15px;
     font-size: 1.8rem;
     font-weight: bold;
+}
+
+#comments .panel-title {
+    display: inline-block;
+}
+
+#comments .edit-comment,
+#comments .delete-comment {
+    float: right;
+    margin: 0 0 0 5px;
 }
 
 #editor-title {

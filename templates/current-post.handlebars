@@ -1,6 +1,7 @@
 <h3>// {{title}}</h3>
 <a href="#/{{_id}}/comment" class="add-new-comment btn btn-primary">Add comment</a>
 <a href="#/posts/add" class="edit-post btn btn-info" id="edit-post">Edit</a>
+<a href="#/posts/add" class="delete-post btn btn-danger" id="edit-post">Delete</a>
 <div id="single-post" class="panel panel-default">
     <header class="panel-heading">
         <h2 class="panel-title">Author: <strong><a href="#/home/all/{{author.username}}">{{author.username}}</a></strong></h2>
@@ -22,23 +23,25 @@
 <ul id="comments">
     {{#each comments}}
     <li>
-        <div class="panel panel-default">
-            <header class="panel-heading">
-                <h2 class="panel-title">Author: <strong><a href="#/home/all/{{author.username}}">{{author.username}}</a></strong></h2>
-            </header>
-            <div class="panel-body">
-                <main class="posts-content">
-                    <article>{{{content}}}</article>
-                </main>
-                <footer class="posts-footer">
-                    <ul class="nav nav-pills" role="tablist">
-                        <li role="presentation" class="add-like-container active"><button class="add-like btn btn-primary">Like <span class="badge">{{likes}}</span></button></li>
-                        <li role="presentation" class="comments-count"><span class="badge">{{labels}}</span></li>
-                        <li role="presentation" class="category-info"><span class="btn btn-warning"><a href="#/home/{{../category}}">{{../category}}</a></span></li>
-                    </ul>
-                </footer>
-            </div>
+    <div class="panel panel-default">
+        <header class="panel-heading">
+            <h2 class="panel-title">Author: <strong><a href="#/home/all/{{author.username}}">{{author.username}}</a></strong></h2>
+            <a href="#/posts/add" class="edit-comment btn btn-info btn-xs" id="edit-post">Edit</a>
+                <a href="#/posts/add" class="delete-comment btn btn-danger btn-xs" id="edit-post">Delete</a>
+        </header>
+        <div class="panel-body">
+            <main class="posts-content">
+                <article>{{{content}}}</article>
+            </main>
+            <footer class="posts-footer">
+                <ul class="nav nav-pills" role="tablist">
+                    <li role="presentation" class="add-like-container active"><button class="add-like btn btn-primary">Like <span class="badge">{{likes}}</span></button></li>
+                    <li role="presentation" class="comments-count"><span class="badge">{{labels}}</span></li>
+                    <li role="presentation" class="category-info"><span class="btn btn-warning"><a href="#/home/{{../category}}">{{../category}}</a></span></li>
+                </ul>
+            </footer>
         </div>
+    </div>
     </li>
     {{/each}}
 </ul>
