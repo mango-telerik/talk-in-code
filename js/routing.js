@@ -45,6 +45,8 @@ var sammyApp = Sammy('#content', function() {
     this.get('#/posts/:postid', function(context) { loader.loadCurrentPost(context, this.params["postid"]); });
 
     this.get('#/posts/:postid/comment', function(context) { loader.loadCreateComment(context, this.params["postid"]); });
+
+    this.get('#/posts/:postid/edit', function(context){ loader.loadEditPost(context, this.params["postid"]); });
 });
 
 let loader = {
@@ -220,6 +222,18 @@ let loader = {
     loadCreateComment: function(context, postid) {
         return 1;
 
+    },
+
+    loadEditPost: function(context, postid){
+        data.posts.editPost(postid)
+            .then (info=> templates.get("create-post")
+                .then(template => {
+                    console.log(info);
+                    $content
+                        .find("#main-content")
+                        .html(template(info[0]));
+                })
+            );
     }
 
 
