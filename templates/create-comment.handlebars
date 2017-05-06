@@ -1,0 +1,54 @@
+<div class="edit-post-block">
+    <h3 id="page-header">// add a new comment</h3>
+    <form id="post-form" class="form-inline" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">Author: <strong><a href="#/home/all/{{author}}">{{author}}</a></strong></h4>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <strong>Category: </strong>
+                    <span class="btn btn-warning dropdown-toggle">{{category}}</span>
+                </div>
+                <div style="float:right;">
+                    <strong>Label: </strong>
+                    <select class="btn btn-default dropdown-toggle" id="tb-comment-label">
+                        <option value="important">important</option>
+                        <option value="question">question</option>
+                        <option value="information">information</option>
+                        <option value="fun">fun</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="form-group">
+        <textarea name='content' class="form-control" id="post-content-field"></textarea>
+    </div>
+    <div class="form-group">
+        <button type="button" id="add-comment-request-button" class="btn btn-primary btn-lg">Add comment</button>
+    </div>
+
+</div>
+<script>
+    tinymce.init({
+        selector: '#post-content-field',
+        theme: "modern",
+        width: "100%",
+        height: 200,
+        plugins: [
+            "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+            "save contextmenu directionality emoticons template paste textcolor"
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",
+        style_formats: [
+            { title: 'Bold text', inline: 'b' },
+            { title: 'Red text', inline: 'span', styles: { color: '#ff0000' } },
+            { title: 'Red header', block: 'h1', styles: { color: '#ff0000' } },
+            { title: 'Example 1', inline: 'span', classes: 'example1' },
+            { title: 'Example 2', inline: 'span', classes: 'example2' }
+        ]
+    });
+
+</script>
