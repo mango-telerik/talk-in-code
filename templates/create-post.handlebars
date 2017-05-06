@@ -4,7 +4,6 @@
     <form id="post-form" method="post">
         <ul class="title-author">
             <li class="single-element-form">
-                <h1 class="title-form">{{title}}</h1>
                 <div class="justified">
                     <label for="tb-thread-title" class="title-form" id="lb-thread-title">Title: </label>
                     <input type="text" value="" placeholder="Title" id="tb-thread-title" class="form-control"/></div>
@@ -23,9 +22,7 @@
             </li>
             <li class="single-element-form">
                 <br/>
-                <div class="justified">
                 <textarea name = 'content' class="content-field" placeholder="Content" id="post-content-field"></textarea>
-                </div>
             </li>
         </ul>
 
@@ -40,7 +37,7 @@
 tinymce.init({
 selector: '#post-content-field',
     theme: "modern",
-    width: 1000,
+    width: "96%",
     height: 200,
     plugins: [
         "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
