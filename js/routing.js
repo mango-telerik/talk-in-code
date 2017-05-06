@@ -277,8 +277,8 @@ let loader = {
                 .then(function() {
                     toastr.success("You have created a new comment!", "Success!");
                     setTimeout(function() {
-                        context.redirect("#/");
-                        document.location.reload(true);
+                        context.redirect("#/posts/" + postid);
+                        //document.location.reload(true);
                     }, 1000);
                 }, function(err) {
                     if (typeof err === "object") {
@@ -313,7 +313,7 @@ let loader = {
                 .then(function() {
                     toastr.success("You have edited your post!", "Success!");
                     setTimeout(function() {
-                        context.redirect("#/");
+                        context.redirect("#/posts/" + postid);
                         document.location.reload(true);
                     }, 1000);
                 }, function(err) {
