@@ -4,13 +4,14 @@
     <form id="post-form" method="post">
         <ul class="title-author">
             <li class="single-element-form">
-                <h1 class="title-form">{{title}}</h1>
                 <div class="justified">
                     <input type="text" value="" placeholder="Title" id="tb-thread-title"/></div>
             </li>
-            <li class="single-element-form">
+            <li class="single-element-form"><br>
                 <h1 class="category-form">{{category}}</h1>
                 <div class="justified">
+
+
                     <select id="tb-thread-category">
                         <option value="JavaScript">JS</option>
                         <option value="HTML">HTML</option>
@@ -20,9 +21,7 @@
                 </div>
             </li>
             <li class="single-element-form">
-                <h1 class="title-form">{{author}}</h1>
-
-                <br/> <div class="justified">created by{{author.username}}</div>
+                <br/>
                 <div class="justified">
                 <textarea name = 'content' class="content-field" placeholder="Content" id="post-content-field"></textarea>
                 </div>

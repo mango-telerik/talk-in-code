@@ -20,3 +20,18 @@
     position: absolute;
     right: 0;
 }
+
+.dd-category{
+    width: 300px;
+    float: left;
+}
+
+.section-title{
+    background-color: lightgrey;
+}
+
+.new-post-block{
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.7);
+
+}

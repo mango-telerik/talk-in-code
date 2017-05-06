@@ -1,17 +1,18 @@
 
 <div class="new-post-block">
-    <h2 id="editor-title">New post</h2>
+    <div class="section-title"><h2 id="editor-title">New post</h2></div>
     <form id="post-form" method="post">
         <ul class="title-author">
             <li class="single-element-form">
                 <h1 class="title-form">{{title}}</h1>
                 <div class="justified">
-                    <input type="text" value="" placeholder="Title" id="tb-thread-title"/></div>
+                    <input type="text" value="" placeholder="Title" id="tb-thread-title" class="form-control"/></div>
             </li>
             <li class="single-element-form">
-                <h1 class="category-form">{{category}}</h1>
+
                 <div class="justified">
-                    <select id="tb-thread-category">
+                    <label for="tb-thread-category" class="category-form">Category: </label>
+                    <select  id="tb-thread-category" title="Category" class="dd-category form-control">
                         <option value="JavaScript">JS</option>
                         <option value="HTML">HTML</option>
                         <option value="JAVA">JAVA</option>
@@ -20,9 +21,7 @@
                 </div>
             </li>
             <li class="single-element-form">
-                <h1 class="title-form">{{author}}</h1>
-
-                <br/> <div class="justified">created by{{author.username}}</div>
+                <br/>
                 <div class="justified">
                 <textarea name = 'content' class="content-field" placeholder="Content" id="post-content-field"></textarea>
                 </div>
@@ -30,8 +29,9 @@
         </ul>
 
         <br>
-        <div class="justified">
-            <button type="button" id="create-new-post-request-button" class="btn btn-primary">Publish</button></div>
+      <div class="justified">
+            <button type="button" id="create-new-post-request-button" class="btn btn-primary">Publish</button>
+    </div>
     </form>
 </div>
 <script>
