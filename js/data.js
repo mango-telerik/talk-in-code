@@ -196,7 +196,7 @@ function getPostComments(id) {
     // create options
     const options = {
         headers: KINVEY.POSTS_HEADER
-    }
+    };
 
     // create query
     let query = `?query={"postid":${id}}`;
@@ -208,16 +208,16 @@ function getPostComments(id) {
     return jsonRequester.get(url, options)
         .then(function(res) {
             return res;
-        })
+        });
 }
 
-function getSinglePost(id){
+function getSinglePost(id) {
     const options = {
         headers: KINVEY.POSTS_HEADER
-    }
+    };
 
     // if category provided create query
-    let query = `?query={"postid":${id}}`;
+    let query = `?query={"_id":"${id}"}`;
 
     // provide url
     const url = KINVEY.URLS.postsUrl + query;
@@ -226,7 +226,7 @@ function getSinglePost(id){
     return jsonRequester.get(url, options)
         .then(function(res) {
             return res;
-        })
+        });
 }
 
 let users = {

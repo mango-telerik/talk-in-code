@@ -97,9 +97,6 @@ let loader = {
                 })
             );
     },
-    loadPostsByAuthor: function(context) {
-
-    },
     loadLoginMenu: function(context) {
         templates.get("login")
             .then(function(template) {
@@ -209,20 +206,22 @@ let loader = {
                 });
         });
     },
-        loadCurrentPost: function (context,postid) {
-            data.posts.getSinglePost(postid)
-                .then(templates.get("current-post")
-                    .then(template => {
-                        $content
-                            .find("#main-content")
-                            .html(template());
-                    }))
-        },
-        loadCreateComment: function (context, postid) {
+    loadCurrentPost: function(context, postid) {
+        data.posts.getSinglePost(postid)
+            .then(info => templates.get("current-post")
+                .then(template => {
+                    console.log(info);
+                    $content
+                        .find("#main-content")
+                        .html(template(info[0]));
+                })
+            );
+    },
+    loadCreateComment: function(context, postid) {
         return 1;
 
-        }
+    }
 
 
-    };
-    sammyApp.run('#/');
+};
+sammyApp.run('#/');
