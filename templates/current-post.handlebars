@@ -1,7 +1,7 @@
 <h3>// {{title}}</h3>
 <a href="#/posts/{{_id}}/comment" class="add-new-comment btn btn-primary">Add comment</a>
-<a href="#/posts/{{_id}}/edit" class="edit-post btn btn-primary" id="edit-post">Edit</a>
-<a href="#/posts/add" class="delete-post btn btn-danger" id="edit-post">Delete</a>
+<a href="#/posts/{{_id}}/edit" class="edit-post btn btn-primary" id="edit-post-{{author.username}}">Edit</a>
+<button class="delete-post btn btn-danger" id="delete-post-{{author.username}}">Delete</button>
 <div id="single-post" class="panel panel-default">
     <header class="panel-heading">
         <h2 class="panel-title">Author: <strong><a href="#/home/all/{{author.username}}">{{author.username}}</a></strong></h2>
@@ -26,8 +26,8 @@
             <div class="panel panel-default">
                 <header class="panel-heading">
                     <h2 class="panel-title">Author: <strong><a href="#/home/all/{{author.username}}">{{author.username}}</a></strong></h2>
-                    <a href="#/posts/add" class="edit-comment btn btn-info btn-xs" id="edit-post">Edit</a>
-                    <a href="#/posts/add" class="delete-comment btn btn-danger btn-xs" id="edit-post">Delete</a>
+                    <a href="#/posts/add" class="edit-comment btn btn-info btn-xs" id="edit-comment-{{author.username}}">Edit</a>
+                    <button href="#/posts/add" class="delete-comment btn btn-danger btn-xs" id="delete-comment-{{author.username}}">Delete</button>
                 </header>
                 <div class="panel-body">
                     <main class="posts-content">

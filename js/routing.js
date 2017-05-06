@@ -46,7 +46,7 @@ var sammyApp = Sammy('#content', function() {
 
     this.get('#/posts/:postid/comment', function(context) { loader.loadCreateComment(context, this.params["postid"]); });
 
-    this.get('#/posts/:postid/edit', function(context){ loader.loadEditPost(context, this.params["postid"]); });
+    this.get('#/posts/:postid/edit', function(context) { loader.loadEditPost(context, this.params["postid"]); });
 });
 
 let loader = {
@@ -225,6 +225,19 @@ let loader = {
                                 .find("#main-content")
                                 .html(template(postWithComments));
                         })
+                        .then(() => {
+                            $(".edit-post").hide();
+                            $(".edit-comment").hide();
+                            $(".delete-post").hide();
+                            $(".delete-comment").hide();
+                            let signedUser = localStorage.getItem(USERNAME_LOCAL_STORAGE);
+                            if (signedUser) {
+                                $("#edit-post-" + signedUser).show();
+                                $("#edit-comment-" + signedUser).show();
+                                $("#delete-post-" + signedUser).show();
+                                $("#delete-comment-" + signedUser).show();
+                            }
+                        })
                     );
             });
     },
@@ -232,15 +245,14 @@ let loader = {
         return 1;
 
     },
-
-    loadEditPost: function(context, postid){
+    loadEditPost: function(context, postid) {
         data.posts.editPost(postid)
-            .then (info=> templates.get("edit-post")
+            .then(info => templates.get("edit-post")
                 .then(template => {
                     console.log(info);
                     $content
                         .find("#main-content")
-                        .html({info});
+                        .html({ info });
                 })
             );
 
