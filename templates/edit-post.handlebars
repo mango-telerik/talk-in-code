@@ -1,57 +1,55 @@
-
 <div class="edit-post-block">
-    <h2 id="editor-title">Edit post</h2>
-    <form id="post-form" method="post">
-        <ul class="title-author">
-            <li class="single-element-form">
-                <h1 class="title-form">{{title}}</h1>
-                <div class="justified">
-                    <input type="text" value="" placeholder="Title" id="tb-thread-title"/></div>
-            </li>
-            <li class="single-element-form">
-                <h1 class="category-form">{{category}}</h1>
-                <div class="justified">
-                    <select id="tb-thread-category">
-                        <option value="JavaScript">JS</option>
-                        <option value="HTML">HTML</option>
-                        <option value="JAVA">JAVA</option>
-                        <option value="PHP">PHP</option>
-                    </select>
+    <h3 id="page-header">// edit post</h3>
+    <form id="post-form" class="form-inline" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">Author: <strong><a href="#/home/all/{{author.username}}">{{author.username}}</a></strong></h4>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <strong>Post title: </strong>
+                    <input type="text" class="form-control" value="{{title}}" id="tb-thread-title"/>
                 </div>
-            </li>
-            <li class="single-element-form">
-                <h1 class="title-form">{{author}}</h1>
-
-                <br/> <div class="justified">created by{{author.username}}</div>
-                <div class="justified">
-                <textarea name = 'content' class="content-field" placeholder="Content" id="post-content-field"></textarea>
-                </div>
-            </li>
-        </ul>
-
-        <br>
-        <div class="justified">
-            <button type="button" id="create-new-post-request-button" class="btn btn-primary">Publish</button></div>
+                <div class="form-group" style="float:right;">
+                <strong>Category: </strong>
+                <select class="btn btn-default dropdown-toggle" id="tb-thread-category">
+                <option value="JavaScript">JavaScript</option>
+                <option value="HTML">HTML</option>
+                <option value="JAVA">JAVA</option>
+                <option value="PHP">PHP</option>
+            </select>
+                <span class="btn btn-warning dropdown-toggle"><a href="#/home/{{category}}">{{category}}</a></span>
+            </div>
+            </div>
+        </div>
     </form>
+    <div class="form-group">
+        <textarea name='content' class="form-control" id="post-content-field">{{content}}</textarea>
+    </div>
+    <div class="form-group">
+        <button type="button" id="edit-post-request-button" class="btn btn-primary btn-lg">Publish</button>
+    </div>
+
 </div>
 <script>
-tinymce.init({
-selector: '#post-content-field',
-    theme: "modern",
-    width: 1000,
-    height: 200,
-    plugins: [
-        "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
-        "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-        "save contextmenu directionality emoticons template paste textcolor"
-    ],
-    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",
-    style_formats: [
-        {title: 'Bold text', inline: 'b'},
-        {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
-        {title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
-        {title: 'Example 1', inline: 'span', classes: 'example1'},
-        {title: 'Example 2', inline: 'span', classes: 'example2'}
-    ]
-});
+    tinymce.init({
+        selector: '#post-content-field',
+        theme: "modern",
+        width: "100%",
+        height: 200,
+        plugins: [
+            "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+            "save contextmenu directionality emoticons template paste textcolor"
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",
+        style_formats: [
+            { title: 'Bold text', inline: 'b' },
+            { title: 'Red text', inline: 'span', styles: { color: '#ff0000' } },
+            { title: 'Red header', block: 'h1', styles: { color: '#ff0000' } },
+            { title: 'Example 1', inline: 'span', classes: 'example1' },
+            { title: 'Example 2', inline: 'span', classes: 'example2' }
+        ]
+    });
+
 </script>

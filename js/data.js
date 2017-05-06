@@ -8,7 +8,8 @@ import {
     USERNAME_MAX_LENGTH,
     USERNAME_LOCAL_STORAGE,
     AUTH_KEY_LOCAL_STORAGE,
-    ID_LOCAL_STORAGE
+    ID_LOCAL_STORAGE,
+    CURRENT_POST
 } from "constants";
 import { KINVEY } from "kinvey";
 
@@ -155,6 +156,9 @@ function getPosts(category, author) {
     // make the request and return promise
     return jsonRequester.get(url, options)
         .then(function(res) {
+            if (localStorage.CURRENT_POST) {
+                localStorage.removeItem(CURRENT_POST);
+            }
             return res;
         });
 }
@@ -177,7 +181,7 @@ function addCommentToPost(id, reqComment) {
             likes: 0
         },
         headers: KINVEY.POSTS_HEADER
-    }
+    };
 
     // provide url
     const url = KINVEY.URLS.postsUrl + id;
@@ -242,16 +246,16 @@ function editPost(reqPost, id) {
             author: { username: reqPost.author.username },
             content: reqPost.content,
             category: reqPost.category,
-            likes: 0
+            likes: reqPost.likes
         },
         headers: KINVEY.POSTS_HEADER
     };
-    let query = `?query={"_id":"${id}"}`;
+
     // provide url
-    const url = KINVEY.URLS.postsUrl+query;
+    const url = KINVEY.URLS.postsUrl + `${id}`;
 
     // make request and return promise
-    return jsonRequester.post(url, options)
+    return jsonRequester.put(url, options)
         .then(function(res) {
             return {
                 title: res.title,
@@ -268,7 +272,7 @@ let users = {
     signOut,
     currentUser,
     authUser
-}
+};
 
 let posts = {
     getPosts,
@@ -277,7 +281,7 @@ let posts = {
     getPostComments,
     getSinglePost,
     editPost
-}
+};
 
 export {
     users,

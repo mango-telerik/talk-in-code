@@ -2,7 +2,10 @@ import * as templates from "template-requester";
 import * as data from "data";
 import User from "userModel";
 import Post from "postModel";
-import { USERNAME_LOCAL_STORAGE } from "constants";
+import {
+    USERNAME_LOCAL_STORAGE,
+    CURRENT_POST
+} from "constants";
 
 const $content = $("#content");
 
@@ -212,6 +215,7 @@ let loader = {
         data.posts.getSinglePost(postid)
             .then(posts => {
                 let currentPost = posts[0];
+                localStorage.setItem(CURRENT_POST, JSON.stringify(currentPost));
                 let currentPostId = currentPost._id;
                 data.posts.getPostComments(currentPostId)
                     .then(comments => {
@@ -246,48 +250,43 @@ let loader = {
 
     },
     loadEditPost: function(context, postid) {
-        data.posts.editPost(postid)
-            .then(info => templates.get("edit-post")
-                .then(template => {
-                    console.log(info);
-                    $content
-                        .find("#main-content")
-                        .html({ info });
+        const currentPost = JSON.parse(localStorage.getItem(CURRENT_POST));
+        console.log(currentPost);
+        templates.get("edit-post")
+            .then(template => {
+                context
+                    .$element()
+                    .find("#main-content")
+                    .html(template(currentPost));
+                return context;
+            });
+        $("body").on("click", "#edit-post-request-button", function(ev) {
+            let category = currentPost.category;
+            let author = currentPost.author;
+            let likes = currentPost.likes;
+            let title = currentPost.likes;
+            category = $("#tb-thread-category").val();
+            $("#tb-thread-title")
+                .keyup(function() {
+                    title = $(this).val();
                 })
-            );
-
-        // $("body").on("click", "#create-new-post-request-button", function(ev) {
-        //     var category;
-        //     var content = "New pst";
-        //     const author = { "username": data.users.authUser() };
-        //     console.log(author);
-        //     const likes = 0;
-        //     $("#tb-thread-title")
-        //         .keyup(function() {
-        //             title = $(this).val();
-        //         })
-        //         .keyup();
-        //     console.log(title);
-        //     category = $("#tb-thread-category").val();
-        //     console.log(category);
-        //     content = tinymce.get("post-content-field").getContent();
-        //     console.log(content);
-        //     const newPost = new Post(author, content, likes, title, category);
-        //     console.log(newPost);
-        //     data.posts.addPost(newPost)
-        //         .then(function() {
-        //             toastr.success("You have published new post!");
-        //             setTimeout(function() {
-        //                 context.redirect("#/");
-        //                 document.location.reload(true);
-        //             }, 1000);
-        //         }, function(err) {
-        //             if (typeof err === "object") {
-        //                 err = err.responseText;
-        //             }
-        //             toastr.error(err);
-        //         });
-        // });
+                .keyup();
+            let content = tinymce.get("post-content-field").getContent();
+            const editedPost = new Post(author, content, likes, title, category);
+            data.posts.editPost(editedPost, postid)
+                .then(function() {
+                    toastr.success("You have edited your post!", "Success!");
+                    setTimeout(function() {
+                        context.redirect("#/");
+                        document.location.reload(true);
+                    }, 1000);
+                }, function(err) {
+                    if (typeof err === "object") {
+                        err = err.responseText;
+                    }
+                    toastr.error(err);
+                });
+        });
     }
 
 
