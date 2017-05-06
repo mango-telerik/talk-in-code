@@ -2,6 +2,7 @@ import * as templates from "template-requester";
 import * as data from "data";
 import User from "userModel";
 import Post from "postModel";
+import Comment from "commentModel";
 import {
     USERNAME_LOCAL_STORAGE,
     CURRENT_POST
@@ -243,10 +244,10 @@ let loader = {
                             }
 
                         })
-                );
-                $(".delete-post").on("click", function () {
+                    );
+                $(".delete-post").on("click", function() {
                     data.posts.deletePost(postid)
-                        .then(function () {
+                        .then(function() {
                             toastr.success("Deleted!");
                             setTimeout(function() {
                                 context.redirect("#/");
@@ -258,19 +259,42 @@ let loader = {
             });
     },
     loadCreateComment: function(context, postid) {
-        return 1;
+        const currentPost = JSON.parse(localStorage.getItem(CURRENT_POST));
+        let author = localStorage.getItem(USERNAME_LOCAL_STORAGE);
+        templates.get("create-comment")
+            .then(template => {
+                $content
+                    .find("#main-content")
+                    .html(template({ category: currentPost.category, author }));
+            });
+        $("body").on("click", "#add-comment-request-button", function(ev) {
+            let label = $("#tb-comment-label").val();
+            let content = tinymce.get("post-content-field").getContent();
 
+            const comment = new Comment({ username: author }, content, 0, label);
+            console.log(JSON.stringify(comment));
+            data.posts.addCommentToPost(comment, postid)
+                .then(function() {
+                    toastr.success("You have created a new comment!", "Success!");
+                    setTimeout(function() {
+                        context.redirect("#/");
+                        document.location.reload(true);
+                    }, 1000);
+                }, function(err) {
+                    if (typeof err === "object") {
+                        err = err.responseText;
+                    }
+                    toastr.error(err);
+                });
+        });
     },
     loadEditPost: function(context, postid) {
         const currentPost = JSON.parse(localStorage.getItem(CURRENT_POST));
-        console.log(currentPost);
         templates.get("edit-post")
             .then(template => {
-                context
-                    .$element()
+                $content
                     .find("#main-content")
                     .html(template(currentPost));
-                return context;
             });
         $("body").on("click", "#edit-post-request-button", function(ev) {
             let category = currentPost.category;

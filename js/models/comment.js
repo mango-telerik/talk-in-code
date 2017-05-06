@@ -2,8 +2,9 @@ import Element from "elementModel";
 
 export default class Comment extends Element {
     constructor(author, content, likes, label) {
-        super(author, content, likes, errors);
+        super(author, content, likes);
         this.label = label;
+        this.errors = null;
     }
 
     get label() {

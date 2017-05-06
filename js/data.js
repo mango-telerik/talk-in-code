@@ -164,7 +164,7 @@ function getPosts(category, author) {
 }
 
 /* Comments */
-function addCommentToPost(id, reqComment) {
+function addCommentToPost(reqComment, id) {
     // if created comment has errors
     const message = reqComment.errors;
     if (message) {
@@ -184,7 +184,7 @@ function addCommentToPost(id, reqComment) {
     };
 
     // provide url
-    const url = KINVEY.URLS.postsUrl + id;
+    const url = KINVEY.URLS.commentsUrl;
 
     // make request and return promise
     return jsonRequester.post(url, options)
@@ -252,7 +252,7 @@ function editPost(reqPost, id) {
     };
 
     // provide url
-    const url = KINVEY.URLS.postsUrl + `${id}`;
+    const url = KINVEY.URLS.postsUrl + id;
 
     // make request and return promise
     return jsonRequester.put(url, options)
@@ -271,11 +271,8 @@ function deletePost(id) {
         headers: KINVEY.USERS_HEADER_DELETE
     };
     let query = `?query={"postid":${id}}`;
-
-    const url = KINVEY.URLS.postsUrl + id;
-
-    return jsonRequester.del(url,options)
-
+    const url = KINVEY.URLS.postsUrl + query;
+    return jsonRequester.del(url, options)
 }
 
 let users = {
