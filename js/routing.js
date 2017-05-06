@@ -206,7 +206,7 @@ let loader = {
                 });
         });
     },
-    loadCurrentPost: function(context, postid){
+    loadCurrentPost: function(context, postid) {
         data.posts.getSinglePost(postid)
             .then(info => templates.get("current-post")
                 .then(template => {
