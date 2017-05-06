@@ -30,9 +30,11 @@ var sammyApp = Sammy('#content', function() {
 
     this.get('#/', context => context.redirect('#/home'));
 
-    this.get('#/home', context => loader.loadHomePage(context));
+    this.get('#/home', context => loader.loadHomePage(context, false, false));
 
-    this.get('#/home/:category', function(context) { loader.loadHomePage(context, this.params["category"]); });
+    this.get('#/home/:category', function(context) { loader.loadHomePage(context, this.params["category"], false); });
+
+    this.get('#/home/all/:author', function(context) { loader.loadHomePage(context, false, this.params["author"]); });
 
     this.get('#/login', context => loader.loadLoginMenu(context));
 
@@ -46,8 +48,8 @@ var sammyApp = Sammy('#content', function() {
 });
 
 let loader = {
-    loadHomePage: function(context, category) {
-        data.posts.getPosts(category)
+    loadHomePage: function(context, category, author) {
+        data.posts.getPosts(category, author)
             .then(info => templates.get("home")
                 .then(template => {
                     $content
@@ -94,6 +96,9 @@ let loader = {
                     });
                 })
             );
+    },
+    loadPostsByAuthor: function(context) {
+
     },
     loadLoginMenu: function(context) {
         templates.get("login")

@@ -133,16 +133,21 @@ function addPost(reqPost) {
         });
 }
 
-function getPosts(category) {
-    // check if category exists
-
+function getPosts(category, author) {
     // create options
     const options = {
         headers: KINVEY.POSTS_HEADER
+    };
+
+    // create query based on what is provided (category, author)
+    let query = "";
+    if (category) {
+        query = `?query={"category":"${category}"}`;
     }
 
-    // if category provided create query
-    let query = category ? `?query={"category":"${category}"}` : "";
+    if (author) {
+        query = `?query={"author.username":"${author}"}`;
+    }
 
     // provide url
     const url = KINVEY.URLS.postsUrl + query;
@@ -151,7 +156,7 @@ function getPosts(category) {
     return jsonRequester.get(url, options)
         .then(function(res) {
             return res;
-        })
+        });
 }
 
 /* Comments */
