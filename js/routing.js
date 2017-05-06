@@ -235,14 +235,47 @@ let loader = {
 
     loadEditPost: function(context, postid){
         data.posts.editPost(postid)
-            .then (info=> templates.get("create-post")
+            .then (info=> templates.get("edit-post")
                 .then(template => {
                     console.log(info);
                     $content
                         .find("#main-content")
-                        .html(template(info[0]));
+                        .html({info});
                 })
             );
+
+        // $("body").on("click", "#create-new-post-request-button", function(ev) {
+        //     var category;
+        //     var content = "New pst";
+        //     const author = { "username": data.users.authUser() };
+        //     console.log(author);
+        //     const likes = 0;
+        //     $("#tb-thread-title")
+        //         .keyup(function() {
+        //             title = $(this).val();
+        //         })
+        //         .keyup();
+        //     console.log(title);
+        //     category = $("#tb-thread-category").val();
+        //     console.log(category);
+        //     content = tinymce.get("post-content-field").getContent();
+        //     console.log(content);
+        //     const newPost = new Post(author, content, likes, title, category);
+        //     console.log(newPost);
+        //     data.posts.addPost(newPost)
+        //         .then(function() {
+        //             toastr.success("You have published new post!");
+        //             setTimeout(function() {
+        //                 context.redirect("#/");
+        //                 document.location.reload(true);
+        //             }, 1000);
+        //         }, function(err) {
+        //             if (typeof err === "object") {
+        //                 err = err.responseText;
+        //             }
+        //             toastr.error(err);
+        //         });
+        // });
     }
 
 
