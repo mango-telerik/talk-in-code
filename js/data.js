@@ -199,7 +199,7 @@ function getPostComments(id) {
     };
 
     // create query
-    let query = `?query={"postid":${id}}`;
+    let query = `?query={"postid":"${id}"}`;
 
     // provide url
     const url = KINVEY.URLS.commentsUrl + query;
