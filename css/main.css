@@ -443,10 +443,14 @@ h4 {
 
 h3 {
     font-size: 22px;
+    display: inline-block;
     font-weight: bold;
-    padding: 10px 0;
+    margin: 5px 0;
+    padding: 6px 10px;
     color: white;
     text-shadow: 3px 3px 2px #1c1c1c;
+    background-color: rgba(36, 41, 46, 0.5);
+    border-radius: 5px;
 }
 
 .form-group>label {
@@ -495,16 +499,14 @@ h3 {
     bottom: 0;
 }
 
-.add-new-thread {
-    float: right;
-    display: block;
-    margin-top: 10px;
-}
-
+.add-new-thread,
 .add-new-comment {
     float: right;
     display: block;
-    margin-top: 10px;
+    margin-top: 6px;
+    padding: 4px 15px;
+    font-size: 1.8rem;
+    font-weight: bold;
 }
 
 #editor-title {
