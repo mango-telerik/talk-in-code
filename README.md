@@ -26,8 +26,7 @@ And much more cool introduction text here...
     - [http-server](https://www.npmjs.com/package/http-server) - `npm install http-server -g`
 - download the source from **[the app repo](https://github.com/mango-telerik/talk-in-code)** or clone it
 - open the root folder in the console / terminal / cmd
-- install **node modules** - `npm install`
-- install **bower components** - `bower install`
+- install **node modules** and **bower components** - `npm install`, bower will install automatically
 - run server - `npm start`
 - open app in browser - `http://localhost:3000/#`
 - to stop server press `Ctrl + C` in the console
