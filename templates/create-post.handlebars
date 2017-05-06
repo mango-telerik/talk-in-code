@@ -1,6 +1,6 @@
 
 <div class="new-post-block">
-    <div class="section-title"><h2 id="editor-title">New post</h2></div>
+    <div class="section-title"><h2 class="editor-title">Create new post</h2></div>
     <form id="post-form" method="post">
         <ul class="title-author">
             <li class="single-element-form">
@@ -11,7 +11,7 @@
             <li class="single-element-form">
 
                 <div class="justified">
-                    <label for="tb-thread-category" class="category-form">Category: </label>
+                    <label for="tb-thread-category" class="category-form" id="lb-thread-category">Category: </label>
                     <select  id="tb-thread-category" title="Category" class="dd-category form-control">
                         <option value="JavaScript">JS</option>
                         <option value="HTML">HTML</option>
@@ -32,6 +32,7 @@
       <div class="justified">
             <button type="button" id="create-new-post-request-button" class="btn btn-primary">Publish</button>
     </div>
+        <br/>
     </form>
 </div>
 <script>

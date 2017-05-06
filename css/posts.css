@@ -28,10 +28,20 @@
 
 .section-title{
     background-color: lightgrey;
+    border-radius: 25px 25px 0 0;
+    height: 35%;
 }
 
 .new-post-block{
     border-radius: 25px;
     background-color: rgba(255, 255, 255, 0.7);
 
+}
+
+#lb-thread-category{
+    vertical-align: bottom;
+}
+
+.editor-title{
+    margin: 5px;
 }
