@@ -1,42 +1,3 @@
-<div class="new-post-block">
-    <div class="section-title">
-        <h1 class="editor-title">Create new post</h1>
-    </div>
-    <form id="post-form" method="post">
-        <ul class="title-author">
-            <li class="single-element-form">
-                <h1 class="title-form">{{title}}</h1>
-                <div class="justified">
-                    <label for="tb-thread-title" class="title-form" id="lb-thread-title">Title: </label>
-                    <input type="text" value="" placeholder="Title" id="tb-thread-title" class="form-control" /></div>
-            </li>
-            <li class="single-element-form">
-
-                <div class="justified">
-                    <label for="tb-thread-category" class="category-form" id="lb-thread-category">Category: </label>
-                    <select id="tb-thread-category" title="Category" class="dd-category form-control">
-                        <option value="JavaScript">JS</option>
-                        <option value="HTML">HTML</option>
-                        <option value="JAVA">JAVA</option>
-                        <option value="PHP">PHP</option>
-                    </select>
-                </div>
-            </li>
-            <li class="single-element-form">
-                <br/>
-                <div>
-                    <textarea name='content' class="content-field" placeholder="Content" id="post-content-field"></textarea>
-                </div>
-            </li>
-        </ul>
-
-        <br>
-        <div class="justified">
-            <button type="button" id="create-new-post-request-button" class="btn btn-primary btn-lg">Publish</button>
-        </div>
-        <br/>
-    </form>
-</div>
 <script>
     tinymce.init({
         selector: '#post-content-field',
@@ -50,12 +11,45 @@
         ],
         toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",
         style_formats: [
-            { title: 'Bold text', inline: 'b' },
-            { title: 'Red text', inline: 'span', styles: { color: '#ff0000' } },
-            { title: 'Red header', block: 'h1', styles: { color: '#ff0000' } },
-            { title: 'Example 1', inline: 'span', classes: 'example1' },
-            { title: 'Example 2', inline: 'span', classes: 'example2' }
+            {title: 'Bold text', inline: 'b'},
+            {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
+            {title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
+            {title: 'Example 1', inline: 'span', classes: 'example1'},
+            {title: 'Example 2', inline: 'span', classes: 'example2'}
         ]
     });
-
 </script>
+<div class="new-post-block">
+    <div class="section-title"><h1 class="editor-title">Create new post</h1></div>
+    <form id="post-form" method="post">
+        <ul class="title-author">
+            <li class="single-element-form">
+                <div class="justified">
+                    <label for="tb-thread-title" class="title-form" id="lb-thread-title">Title: </label>
+                    <input type="text" value="" id="tb-thread-title" class="form-control"/></div>
+            </li>
+            <li class="single-element-form">
+
+                <div class="justified">
+                    <label for="tb-thread-category" class="category-form" id="lb-thread-category">Category: </label>
+                    <select  id="tb-thread-category" title="Category" class="dd-category form-control">
+                        <option value="JavaScript">JS</option>
+                        <option value="HTML">HTML</option>
+                        <option value="JAVA">JAVA</option>
+                        <option value="PHP">PHP</option>
+                    </select>
+                </div>
+            </li>
+            <li class="single-element-form">
+                <br/>
+                <textarea name = 'content' class="content-field" placeholder="Content" id="post-content-field"></textarea>
+            </li>
+        </ul>
+
+        <br>
+      <div class="justified">
+            <button type="button" id="create-new-post-request-button" class="btn btn-primary">Publish</button>
+    </div>
+        <br/>
+    </form>
+</div>
