@@ -1,4 +1,5 @@
 import { sammyApp, loader } from "router";
+import * as data from "data";
 
 (function() {
     // start router
