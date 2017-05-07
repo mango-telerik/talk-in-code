@@ -10,15 +10,17 @@
             </header>
             <div class="panel-body">
                 <main class="posts-content">
-                    <div class="date-field"> <h4 class="date-title">Date: {{_kmd.ect}}</h4></div>
                     <h4>Author: <a href="#/home/all/{{author.username}}">{{author.username}}</a></h4>
-
                     <article>{{{content}}}</article>
                 </main>
                 <footer class="posts-footer">
                     <ul class="nav nav-pills" role="tablist">
                         <li role="presentation" class="add-like-container active"><button class="add-like btn btn-primary">Like <span class="badge">{{likes}}</span></button></li>
-                        {{!--<li role="presentation" class="comments-count">Comments <span class="badge">{{this.comments}}</span></li>--}}
+                        <li><iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=large&mobile_iframe=true&appId=160031291195492&width=72&height=28" width="72" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe></li>
+                        <!--<li><div class="fb-share-button"-->
+                                 <!--data-href="http://www.your-domain.com/your-page.html"-->
+                                 <!--data-layout="button_count">-->
+                        <!--</div></li>-->
                         <li role="presentation" class="category-info"><span class="btn btn-warning"><a href="#/home/{{category}}">{{category}}</a></span></li>
                     </ul>
                 </footer>
