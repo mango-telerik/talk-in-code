@@ -216,6 +216,10 @@ div.justified {
     text-decoration: none;
 }
 
+.fb-page{
+    padding-bottom: 3%;
+}
+
 .footer {
     position: fixed;
     bottom: 0;
@@ -224,4 +228,6 @@ div.justified {
     height: 30px;
     padding: 5px 0 0 0;
     background-color: #e0e0e0;
+    margin-top: 25px;
 }
+
