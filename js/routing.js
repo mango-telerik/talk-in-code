@@ -52,6 +52,8 @@ var sammyApp = Sammy('#content', function() {
     this.get('#/posts/:postid/comment', function(context) { loader.loadCreateComment(context, this.params["postid"]); });
 
     this.get('#/posts/:postid/edit', function(context) { loader.loadEditPost(context, this.params["postid"]); });
+
+    this.get('#/comments/:commentid/edit', function(context) { loader.loadEditComment(context, this.params["commentid"]); });
 });
 
 let loader = {
@@ -159,7 +161,7 @@ let loader = {
                 return context;
             })
             .then(() => {
-                $(document).ready(function() {
+                $(() => {
                     tinyInit();
                 });
             });
@@ -168,16 +170,13 @@ let loader = {
             var title, category;
             var content = "New pst";
             const author = { "username": data.users.authUser() };
-            console.log(author);
             const likes = 0;
             $("#tb-thread-title")
                 .keyup(function() {
                     title = $(this).val();
                 })
                 .keyup();
-            console.log(title);
             category = $("#tb-thread-category").val();
-            console.log(category);
             content = tinymce.get("post-content-field").getContent();
             console.log(content);
             const newPost = new Post(author, content, likes, title, category);
@@ -210,7 +209,6 @@ let loader = {
                     })
                     .then(postWithComments => templates.get("current-post")
                         .then(template => {
-                            console.log(postWithComments);
                             $content
                                 .find("#main-content")
                                 .html(template(postWithComments));
@@ -252,7 +250,7 @@ let loader = {
             .then(template => {
                 $content
                     .find("#main-content")
-                    .html(template({ category: currentPost.category, author }));
+                    .html(template({ category: currentPost.category, id: postid }));
             })
             .then(() => {
                 $(document).ready(function() {
@@ -262,8 +260,8 @@ let loader = {
 
         $("body").on("click", "#add-comment-request-button", function(ev) {
             let label = $("#tb-comment-label").val();
+            console.log(tinymce.get("post-content-field"));
             let content = tinymce.get("post-content-field").getContent();
-
             const comment = new Comment({ username: author }, content, 0, label);
             console.log(JSON.stringify(comment));
             data.posts.addCommentToPost(comment, postid)
@@ -299,7 +297,7 @@ let loader = {
             let category = currentPost.category;
             let author = currentPost.author;
             let likes = currentPost.likes;
-            let title = currentPost.likes;
+            let title = currentPost.title;
             category = $("#tb-thread-category").val();
             $("#tb-thread-title")
                 .keyup(function() {
@@ -322,6 +320,46 @@ let loader = {
                     toastr.error(err);
                 });
         });
+    },
+    loadEditComment: function(context, commentid) {
+        data.posts.getComment(commentid)
+            .then(currentComments => {
+                console.log(currentComments);
+                templates.get("edit-comment")
+                    .then(template => {
+                        $content
+                            .find("#main-content")
+                            .html(template(currentComments[0]));
+                    })
+                    .then(() => {
+                        $(document).ready(function() {
+                            tinyInit();
+                        });
+                    });
+
+                $("body").on("click", "#edit-comment-request-button", function(ev) {
+                    let currentComment = currentComments[0];
+                    let author = currentComment.author;
+                    let likes = currentComment.likes;
+                    let label = $("#tb-comment-label").val();
+                    let content = tinymce.get("post-content-field").getContent();
+                    const comment = new Comment(author, content, 0, label);
+
+                    data.posts.editCommentToPost(comment, commentid, currentComment.postid)
+                        .then(function() {
+                            toastr.success("You have edited your comment!", "Success!");
+                            setTimeout(function() {
+                                context.redirect("#/posts/" + currentComment.postid);
+                                //document.location.reload(true);
+                            }, 1000);
+                        }, function(err) {
+                            if (typeof err === "object") {
+                                err = err.responseText;
+                            }
+                            toastr.error(err);
+                        });
+                });
+            });
     }
 };
 

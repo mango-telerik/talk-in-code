@@ -197,6 +197,38 @@ function addCommentToPost(reqComment, id) {
         });
 }
 
+function editCommentToPost(reqComment, id, postid) {
+    // if created comment has errors
+    const message = reqComment.errors;
+    if (message) {
+        return Promise.reject(message.join("<br/>"));
+    }
+
+    // create options
+    const options = {
+        data: {
+            author: reqComment.author,
+            content: reqComment.content,
+            label: reqComment.label,
+            postid: postid,
+            likes: reqComment.likes
+        },
+        headers: KINVEY.POSTS_HEADER
+    };
+
+    // provide url
+    const url = KINVEY.URLS.commentsUrl + id;
+
+    // make request and return promise
+    return jsonRequester.put(url, options)
+        .then(function(res) {
+            return {
+                author: res.author.username,
+                id: res._id
+            };
+        });
+}
+
 function getPostComments(id) {
     // create options
     const options = {
@@ -226,6 +258,24 @@ function getSinglePost(id) {
 
     // provide url
     const url = KINVEY.URLS.postsUrl + query;
+
+    // make the request and return promise
+    return jsonRequester.get(url, options)
+        .then(function(res) {
+            return res;
+        });
+}
+
+function getComment(id) {
+    const options = {
+        headers: KINVEY.POSTS_HEADER
+    };
+
+    // if category provided create query
+    let query = `?query={"_id":"${id}"}`;
+
+    // provide url
+    const url = KINVEY.URLS.commentsUrl + query;
 
     // make the request and return promise
     return jsonRequester.get(url, options)
@@ -290,6 +340,8 @@ let posts = {
     addCommentToPost,
     getPostComments,
     getSinglePost,
+    getComment,
+    editCommentToPost,
     editPost,
     deletePost
 };
