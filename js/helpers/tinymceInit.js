@@ -1,6 +1,6 @@
 function tinyInit() {
     tinymce.init({
-        selector: '#post-content-field',
+        selector: "#post-content-field",
         theme: "modern",
         width: "100%",
         height: 200,

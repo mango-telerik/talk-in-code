@@ -1,26 +1,24 @@
-<script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=6ab5v9vrn0ox7oz8zwgdlo18wlbxwj76pvwott8ywmnlwdve'></script>
+<script src="./tinymce/tinymce.min.js"></script>
 <div class="edit-post-block">
-    <h3 id="page-header">// edit post</h3>
+    <h3 id="page-header">// edit your comment</h3>
     <form id="post-form" class="form-inline" method="post">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">Author: <strong><a href="#/home/all/{{author.username}}">{{author.username}}</a></strong></h4>
             </div>
             <div class="panel-body">
-                <div class="form-group">
-                    <strong>Post title: </strong>
-                    <input type="text" class="form-control" value="{{title}}" id="tb-thread-title"/>
+                <div>
+                    <strong>Label: </strong>
+                    <select class="btn btn-default dropdown-toggle" id="tb-comment-label">
+                        <option class="bg-faded" value="default">default</option>
+                        <option class="bg-primary" value="primary">primary</option>
+                        <option class="bg-success" value="success">success</option>
+                        <option class="bg-warning" value="warning">warning</option>
+                        <option class="bg-danger" value="danger">danger</option>
+                        <option class="bg-info" value="info">info</option>
+                    </select>
+                    <span class="btn btn-info" style="float:right"><a href="#/posts/{{postid}}">Back to post</a></span>
                 </div>
-                <div class="form-group" style="float:right;">
-                <strong>Category: </strong>
-                <select class="btn btn-default dropdown-toggle" id="tb-thread-category">
-                <option value="JavaScript">JavaScript</option>
-                <option value="HTML">HTML</option>
-                <option value="JAVA">JAVA</option>
-                <option value="PHP">PHP</option>
-            </select>
-                <span class="btn btn-warning dropdown-toggle"><a href="#/home/{{category}}">{{category}}</a></span>
-            </div>
             </div>
         </div>
     </form>
@@ -28,7 +26,6 @@
         <textarea name='content' class="form-control" id="post-content-field">{{content}}</textarea>
     </div>
     <div class="form-group">
-        <button type="button" id="edit-post-request-button" class="btn btn-primary btn-lg">Publish</button>
+        <button type="button" id="edit-comment-request-button" class="btn btn-primary btn-lg">Edit your comment</button>
     </div>
-
 </div>

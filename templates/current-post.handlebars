@@ -25,10 +25,10 @@
 <ul id="comments">
     {{#each comments}}
         <li>
-            <div class="panel panel-default">
+            <div class="panel panel-{{label}}">
                 <header class="panel-heading">
                     <h2 class="panel-title">Author: <strong><a href="#/home/all/{{author.username}}">{{author.username}}</a></strong></h2>
-                    <a href="#/posts/add" class="edit-comment btn btn-info btn-xs edit-comment-{{author.username}}">Edit</a>
+                    <a href="#/comments/{{_id}}/edit" class="edit-comment btn btn-info btn-xs edit-comment-{{author.username}}">Edit</a>
                     <button href="#/posts/add" class="delete-comment btn btn-danger btn-xs delete-comment-{{author.username}}">Delete</button>
                 </header>
                 <div class="panel-body">

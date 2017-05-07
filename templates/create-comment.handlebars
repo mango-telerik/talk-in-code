@@ -1,4 +1,4 @@
-<script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=6ab5v9vrn0ox7oz8zwgdlo18wlbxwj76pvwott8ywmnlwdve'></script>
+<script src="./tinymce/tinymce.min.js"></script>
 <div class="edit-post-block">
     <h3 id="page-header">// add a new comment</h3>
     <form id="post-form" class="form-inline" method="post">
@@ -9,15 +9,18 @@
             <div class="panel-body">
                 <div class="form-group">
                     <strong>Category: </strong>
-                    <span class="btn btn-warning dropdown-toggle">{{category}}</span>
+                    <span class="btn btn-warning">{{category}}</span>
                 </div>
+                <span class="btn btn-info"><a href="#/posts/{{id}}">Back to post</a></span>
                 <div style="float:right;">
                     <strong>Label: </strong>
                     <select class="btn btn-default dropdown-toggle" id="tb-comment-label">
-                        <option value="important">important</option>
-                        <option value="question">question</option>
-                        <option value="information">information</option>
-                        <option value="fun">fun</option>
+                        <option class="bg-faded" value="default">default</option>
+                        <option class="bg-primary" value="primary">primary</option>
+                        <option class="bg-success" value="success">success</option>
+                        <option class="bg-warning" value="warning">warning</option>
+                        <option class="bg-danger" value="danger">danger</option>
+                        <option class="bg-info" value="info">info</option>
                     </select>
                 </div>
             </div>
