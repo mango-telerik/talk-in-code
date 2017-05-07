@@ -24,10 +24,20 @@
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
-//    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=160031291195492";
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-    <div id="wrapper">
+
+<div id="fb-root-page"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<blockquote cite="https://www.facebook.com/Mango-forum-1423907267671219/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Mango-forum-1423907267671219/">Mango forum</a></blockquote></div>
+    <br id="wrapper">
         <div class="overlay"></div>
         <!--    Sidebar    -->
         <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
@@ -107,6 +117,8 @@
         <div id="content">
             <div class="container-fluid">
                 <main id="main-content"></main>
+                <div class="fb-page justified" data-href="https://www.facebook.com/Mango-forum-1423907267671219/" data-height="130" data-small-header="false" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Mango-forum-1423907267671219/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Mango-forum-1423907267671219/">Mango forum</a></blockquote></div>
+                </br>
             </div>
             <div class="container-fluid">
                 <aside id="aside"></aside>
@@ -115,7 +127,6 @@
 
         <footer class="footer">
             <div class="container">
-
                 <p class="text-muted">Telerik Academy - JS Applications - Teamwork</p>
             </div>
         </footer>
