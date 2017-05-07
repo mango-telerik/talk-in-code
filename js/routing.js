@@ -10,9 +10,6 @@ import {
 } from "constants";
 
 const $content = $("#content");
-var hbs = require('hbs');
-
-hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
 
 // http://codeseven.github.io/toastr/demo.html
 toastr.options = {
@@ -152,12 +149,13 @@ let loader = {
             });
     },
     loadCreatePost: function(context) {
+        let user = localStorage.getItem(USERNAME_LOCAL_STORAGE);
         templates.get("create-post")
             .then(template => {
                 context
                     .$element()
                     .find("#main-content")
-                    .html(template);
+                    .html(template({ user }));
                 return context;
             })
             .then(() => {

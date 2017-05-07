@@ -1,35 +1,33 @@
 <script src='https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=6ab5v9vrn0ox7oz8zwgdlo18wlbxwj76pvwott8ywmnlwdve'></script>
-<div class="new-post-block">
-    <div class="section-title"><h1 class="editor-title">Create new post</h1></div>
-    <form id="post-form" method="post">
-        <ul class="title-author">
-            <li class="single-element-form">
-                <div class="justified">
-                    <label for="tb-thread-title" class="title-form" id="lb-thread-title">Title: </label>
-                    <input type="text" value="" id="tb-thread-title" class="form-control"/></div>
-            </li>
-            <li class="single-element-form">
-
-                <div class="justified">
-                    <label for="tb-thread-category" class="category-form" id="lb-thread-category">Category: </label>
-                    <select  id="tb-thread-category" title="Category" class="dd-category form-control">
-                        <option value="JavaScript">JS</option>
+<div class="edit-post-block">
+    <h3 id="page-header">// create new post</h3>
+    <form id="post-form" class="form-group" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">Author: <strong><a href="#/home/all/{{user}}">{{user}}</a></strong></h4>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <strong>Post title: </strong>
+                    <input type="text" class="form-control" placeholder="My awesome post!" id="tb-thread-title" />
+                </div>
+                <div class="form-group">
+                    <strong>Select category: </strong >
+                    <select class="btn btn-default dropdown-toggle" id="tb-thread-category">
+                        <option value="JavaScript">JavaScript</option>
                         <option value="HTML">HTML</option>
                         <option value="JAVA">JAVA</option>
                         <option value="PHP">PHP</option>
                     </select>
+                    <span class="btn btn-info" style="float:right"><a href="#/home">Back to all posts</a></span>
                 </div>
-            </li>
-            <li class="single-element-form">
-                <br/>
-                <textarea name = 'content' class="content-field" placeholder="Content" id="post-content-field"></textarea>
-            </li>
-        </ul>
-
-        <br>
-      <div class="justified">
-            <button type="button" id="create-new-post-request-button" class="btn btn-primary">Publish</button>
-    </div>
-        <br/>
+            </div>
+        </div>
     </form>
+    <div class="form-group">
+        <textarea name='content' class="form-control" id="post-content-field">{{content}}</textarea>
+    </div>
+    <div class="form-group">
+        <button type="button" id="edit-post-request-button" class="btn btn-primary btn-lg">Publish</button>
+    </div>
 </div>
