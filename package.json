@@ -23,6 +23,7 @@
     },
     "homepage": "https://github.com/mango-telerik/talk-in-code-app#readme",
     "dependencies": {
+	"bower": "^1.5.2",
         "systemjs": "^0.20.12",
         "systemjs-plugin-babel": "0.0.21"
     }
