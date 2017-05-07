@@ -27,6 +27,7 @@ System.config({
         "postModel": "./js/models/post.js",
         "commentModel": "./js/models/comment.js",
         "kinvey": "./js/helpers/kinvey.js",
-        "router": "./js/routing.js"
+        "router": "./js/routing.js",
+        "tinymce-init": "./js/helpers/tinymceInit.js"
     }
 });

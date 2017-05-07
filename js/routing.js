@@ -2,6 +2,7 @@ import * as templates from "template-requester";
 import * as data from "data";
 import User from "userModel";
 import Post from "postModel";
+import { tinyInit } from "tinymce-init";
 import Comment from "commentModel";
 import {
     USERNAME_LOCAL_STORAGE,
@@ -113,7 +114,7 @@ let loader = {
                                 err = err.responseText;
                             }
                             toastr.error(err, "Error!");
-                        })
+                        });
                 });
             });
     },
@@ -143,9 +144,9 @@ let loader = {
                                 err = err.responseText;
                             }
                             toastr.error(err, "Error!");
-                        })
+                        });
                 });
-            })
+            });
     },
     loadCreatePost: function(context) {
         templates.get("create-post")
@@ -155,7 +156,13 @@ let loader = {
                     .find("#main-content")
                     .html(template);
                 return context;
+            })
+            .then(() => {
+                $(document).ready(function() {
+                    tinyInit();
+                });
             });
+
         $("body").on("click", "#create-new-post-request-button", function(ev) {
             var title, category;
             var content = "New pst";
@@ -232,7 +239,7 @@ let loader = {
                                 context.redirect("#/");
                                 document.location.reload(true);
                             }, 1000);
-                        })
+                        });
                 });
 
             });
@@ -245,7 +252,13 @@ let loader = {
                 $content
                     .find("#main-content")
                     .html(template({ category: currentPost.category, author }));
+            })
+            .then(() => {
+                $(document).ready(function() {
+                    tinyInit();
+                });
             });
+
         $("body").on("click", "#add-comment-request-button", function(ev) {
             let label = $("#tb-comment-label").val();
             let content = tinymce.get("post-content-field").getContent();
@@ -274,7 +287,13 @@ let loader = {
                 $content
                     .find("#main-content")
                     .html(template(currentPost));
+            })
+            .then(() => {
+                $(document).ready(function() {
+                    tinyInit();
+                });
             });
+
         $("body").on("click", "#edit-post-request-button", function(ev) {
             let category = currentPost.category;
             let author = currentPost.author;
