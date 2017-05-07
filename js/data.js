@@ -129,7 +129,8 @@ function addPost(reqPost) {
             return {
                 title: res.title,
                 author: res.author.username,
-                id: res._id
+                id: res._id,
+                createdate: res._kmd.ect
             };
         });
 }
