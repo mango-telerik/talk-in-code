@@ -22,7 +22,7 @@
 }
 
 .dd-category{
-    width: 30%;
+    width: 25%;
     float: left;
 }
 
@@ -54,5 +54,11 @@
 }
 
 #create-new-post-request-button{
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+}
+
+.content-field{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
