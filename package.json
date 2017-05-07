@@ -6,7 +6,7 @@
     "scripts": {
         "test": "test",
         "postinstall": "bower install",
-        "start": "http-server -p 3000"
+        "start": "http-server -p 8081"
     },
     "repository": {
         "type": "git",
