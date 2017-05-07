@@ -19,6 +19,14 @@
 </head>
 
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+//    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=160031291195492";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
     <div id="wrapper">
         <div class="overlay"></div>
         <!--    Sidebar    -->
@@ -107,6 +115,7 @@
 
         <footer class="footer">
             <div class="container">
+
                 <p class="text-muted">Telerik Academy - JS Applications - Teamwork</p>
             </div>
         </footer>
@@ -118,7 +127,6 @@
         <script src="./bower_components/toastr/toastr.min.js"></script>
         <script src="./bower_components/jquery-ui/jquery-ui.min.js"></script>
         <script src="./bower_components/handlebars/handlebars.min.js"></script>
-        <script src="./node_modules/handlebars-dateformat/index.js"></script>
         <script src="./bower_components/crypto-js/crypto-js.js"></script>
         <script src="./node_modules/systemjs/dist/system.js"></script>
         <script src="./js/system-config.js"></script>
