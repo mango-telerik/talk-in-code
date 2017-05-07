@@ -5,8 +5,8 @@
     "main": "main.js",
     "scripts": {
         "test": "test",
-        "postinstall": "bower install",
-        "start": "http-server -p 8081"
+        "postinstall": "./node_modules/bower/bin/bower install",
+        "start": "http-server"
     },
     "repository": {
         "type": "git",
