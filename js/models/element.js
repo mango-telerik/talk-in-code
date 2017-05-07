@@ -16,6 +16,10 @@ export default class Element {
         let message = null;
         if (typeof val === "undefined" || val === null) {
             message = "Author must contain username!";
+        } else {
+            if (val.username.length < 3) {
+                message = "Username must be at least 3 symbols!";
+            }
         }
         if (message) {
             this.addError(message);

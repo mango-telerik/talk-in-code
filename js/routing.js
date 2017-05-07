@@ -27,7 +27,7 @@ toastr.options = {
     "hideEasing": "linear",
     "showMethod": "slideDown",
     "hideMethod": "slideUp"
-}
+};
 
 var sammyApp = Sammy('#content', function() {
     this.get('/', context => context.redirect('#/home'));
@@ -77,29 +77,6 @@ let loader = {
                         $("#add-new-thread").show();
                         $("#login-button").hide();
                     }
-
-                    // click login -> goes to login page
-                    $("body").on("click", "#login-button", () => {
-                        context.redirect("#/login");
-                    });
-
-                    // click logout -> logouts and goes to home page
-                    $("body").on("click", "#logout-button", () => {
-                        // console.log(data);
-                        data.users.signOut()
-                            .then((user) => {
-                                toastr.success("User " + user + " signed out!", "Success!");
-                                context.redirect("#/");
-                                $("#logout-button").fadeOut(100, function() {
-                                    $("#login-button")
-                                        .fadeIn(400);
-                                    $("#login-info").hide();
-                                });
-                            })
-                            .catch(err => {
-                                toastr.error(err, "Error!");
-                            });
-                    });
                 })
             );
     },
@@ -231,12 +208,14 @@ let loader = {
                                 .html(template(postWithComments));
                         })
                         .then(() => {
+                            $(".add-new-comment").hide();
                             $(".edit-post").hide();
                             $(".edit-comment").hide();
                             $(".delete-post").hide();
                             $(".delete-comment").hide();
                             let signedUser = localStorage.getItem(USERNAME_LOCAL_STORAGE);
                             if (signedUser) {
+                                $(".add-new-comment").show();
                                 $("#edit-post-" + signedUser).show();
                                 $(".edit-comment-" + signedUser).show();
                                 $("#delete-post-" + signedUser).show();
@@ -324,7 +303,6 @@ let loader = {
                 });
         });
     }
-
-
 };
-sammyApp.run('#/');
+
+export { sammyApp, loader };

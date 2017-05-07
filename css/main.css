@@ -140,7 +140,8 @@ h3 {
 .add-new-thread,
 .add-new-comment,
 .edit-post,
-.delete-post {
+.delete-post,
+.home-from-single-post {
     float: right;
     display: block;
     margin: 6px 0 0 5px;
