@@ -9,6 +9,9 @@ import {
 } from "constants";
 
 const $content = $("#content");
+var hbs = require('hbs');
+
+hbs.registerHelper('dateFormat', require('handlebars-dateformat'));
 
 // http://codeseven.github.io/toastr/demo.html
 toastr.options = {
