@@ -46,7 +46,7 @@ var sammyApp = Sammy('#content', function() {
 });
 
 let loader = {
-    loadHomePage: function(context, category, author, page) {
+    loadHomePage: function(context, category, author) {
 
         data.posts.getPosts(category, author)
             .then(info => templates.get("home")
