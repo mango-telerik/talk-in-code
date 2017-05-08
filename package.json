@@ -1,30 +1,30 @@
 {
-    "name": "talk-in-code-app",
-    "version": "1.0.0",
-    "description": "forum for developers educational app",
-    "main": "main.js",
-    "scripts": {
-        "test": "test",
-        "postinstall": "bower install",
-        "start": "http-server -p 3000"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/mango-telerik/talk-in-code-app.git"
-    },
-    "keywords": [
-        "forum",
-        "developers"
-    ],
-    "author": "team Mango",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/mango-telerik/talk-in-code-app/issues"
-    },
-    "homepage": "https://github.com/mango-telerik/talk-in-code-app#readme",
-    "dependencies": {
-	"bower": "^1.5.2",
-        "systemjs": "^0.20.12",
-        "systemjs-plugin-babel": "0.0.21"
-    }
+  "name": "talk-in-code-app",
+  "version": "1.0.0",
+  "description": "forum for developers educational app",
+  "main": "main.js",
+  "scripts": {
+    "test": "start chrome http://127.0.0.1:8080/tests/tests.html && http-server -p 3003",
+    "postinstall": "bower install",
+    "start": "http-server -p 3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mango-telerik/talk-in-code-app.git"
+  },
+  "keywords": [
+    "forum",
+    "developers"
+  ],
+  "author": "team Mango",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mango-telerik/talk-in-code-app/issues"
+  },
+  "homepage": "https://github.com/mango-telerik/talk-in-code-app#readme",
+  "dependencies": {
+    "bower": "^1.5.2",
+    "systemjs": "^0.20.12",
+    "systemjs-plugin-babel": "0.0.21"
+  }
 }

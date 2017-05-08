@@ -32,8 +32,7 @@ function register(reqUser) {
             credential: reqUser.credential
         },
         headers: KINVEY.USERS_HEADER
-    }
-    console.log(KINVEY.USERS_HEADER);
+    };
 
     // provide url
     const url = KINVEY.URLS.userRegisterUrl;
@@ -70,9 +69,10 @@ function signIn(user) {
     // make request, set user to local storage and return promise
     return jsonRequester.post(url, options)
         .then(res => {
-            localStorage.setItem(USERNAME_LOCAL_STORAGE, res.username);
-            localStorage.setItem(AUTH_KEY_LOCAL_STORAGE, res._kmd.authtoken);
-            localStorage.setItem(ID_LOCAL_STORAGE, res._id);
+            console.log(res);
+            // localStorage.setItem(USERNAME_LOCAL_STORAGE, res.username);
+            // localStorage.setItem(AUTH_KEY_LOCAL_STORAGE, res._kmd.authtoken);
+            // localStorage.setItem(ID_LOCAL_STORAGE, res._id);
             return res;
         });
 }
@@ -162,8 +162,8 @@ function getPosts(category, author) {
             }
 
             for (let i = 0; i < res.length; i += 1) {
-            var createdate = new Date(res[i]._kmd.ect);
-                res[i]._kmd.ect =moment(createdate).format('YYYY-MM-DD HH:mm');
+                var createdate = new Date(res[i]._kmd.ect);
+                res[i]._kmd.ect = moment(createdate).format('YYYY-MM-DD HH:mm');
             }
             return res;
         });
@@ -252,7 +252,7 @@ function getPostComments(id) {
 
             for (let i = 0; i < res.length; i += 1) {
                 var createdate = new Date(res[i]._kmd.ect);
-                res[i]._kmd.ect =moment(createdate).format('YYYY-MM-DD HH:mm');
+                res[i]._kmd.ect = moment(createdate).format('YYYY-MM-DD HH:mm');
             }
             return res;
         });
@@ -275,7 +275,7 @@ function getSinglePost(id) {
 
             for (let i = 0; i < res.length; i += 1) {
                 var createdate = new Date(res[i]._kmd.ect);
-                res[i]._kmd.ect =moment(createdate).format('YYYY-MM-DD HH:mm');
+                res[i]._kmd.ect = moment(createdate).format('YYYY-MM-DD HH:mm');
             }
             return res;
 

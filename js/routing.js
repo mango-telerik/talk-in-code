@@ -6,6 +6,8 @@ import { tinyInit } from "tinymce-init";
 import Comment from "commentModel";
 import {
     USERNAME_LOCAL_STORAGE,
+    AUTH_KEY_LOCAL_STORAGE,
+    ID_LOCAL_STORAGE,
     CURRENT_POST
 } from "constants";
 
@@ -54,7 +56,6 @@ let loader = {
                     if (category) {
                         allPosts.currentCategory = "/ " + category;
                     }
-                    console.log(info);
                     $content
                         .find("#main-content")
                         .html(template(allPosts));
@@ -95,6 +96,10 @@ let loader = {
 
                     data.users.signIn(user)
                         .then(user => {
+                            console.log(user);
+                            localStorage.setItem(USERNAME_LOCAL_STORAGE, user.username);
+                            localStorage.setItem(AUTH_KEY_LOCAL_STORAGE, user._kmd.authtoken);
+                            localStorage.setItem(ID_LOCAL_STORAGE, user._id);
                             toastr.success("User " + user.username + " signed in!", "Success!");
                             $("#login-button").fadeOut(100, function() {
                                 $("#logout-button")
