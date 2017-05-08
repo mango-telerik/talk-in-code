@@ -105,6 +105,7 @@ h4 {
 
 .panel {
     margin: 0 0 5px 0;
+    border: none;
     border-radius: 0;
     background: transparent;
 }
