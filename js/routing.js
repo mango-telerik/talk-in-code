@@ -370,7 +370,7 @@ let loader = {
                 toastr.success("Your post was deleted!", "Success!");
                 setTimeout(function() {
                     context.redirect("#/");
-                    //document.location.reload(true);
+                    document.location.reload(true);
                 }, 1000);
             })
             .catch(err => {
