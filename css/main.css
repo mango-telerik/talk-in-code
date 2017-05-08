@@ -64,7 +64,7 @@ h4 {
     width: 100%;
     height: 100%;
     z-index: 9999;
-    background: url('/images/Preloader_1.gif') 50% 50% no-repeat rgb(249, 249, 249);
+    background: url('/images/loading.gif') 50% 50% no-repeat rgba(250, 250, 250, 0.95);
 }
 
 #content {
@@ -122,6 +122,13 @@ h4 {
 .panel-heading {
     opacity: 0.7;
     padding: 9px 20px;
+    border: none;
+}
+
+.panel-footer {
+    padding: 5px 20px;
+    background-color: rgba(252, 252, 252, 0.9);
+    border: none;
 }
 
 #single-post .panel-body {

@@ -33,6 +33,8 @@
         <main class="posts-content">
             <article>{{{content}}}</article>
         </main>
+    </div>
+    <div class="panel-footer">
         <footer class="posts-footer">
             <ul class="nav nav-pills" role="tablist">
                 <li role="presentation" class="add-like-container active"><button class="add-post-like btn btn-primary" id="{{_id}}">Like <span class="badge">{{likes}}</span></button></li>
@@ -69,7 +71,8 @@
 
     <li>
         <div class="panel panel-{{label}}">
-            <header class="panel-heading"><h4 class="createdate">Created on: {{_kmd.ect}}</h4>
+            <header class="panel-heading">
+                <h4 class="createdate">Created on: {{_kmd.ect}}</h4>
                 <h2 class="panel-title">Author: <strong><a href="#/home/all/{{author.username}}">{{author.username}}</a></strong></h2>
 
                 <a href="#/comments/{{_id}}/edit" class="edit-comment btn btn-info btn-xs edit-comment-{{author.username}}">Edit</a>
@@ -80,6 +83,8 @@
                 <main class="posts-content">
                     <article>{{{content}}}</article>
                 </main>
+    </div>
+    <div class="panel-footer">
                 <footer class="posts-footer">
                     <ul class="nav nav-pills" role="tablist">
                         <li role="presentation" class="add-like-container active"><button class="add-comment-like btn btn-primary" id="{{_id}}">Like <span class="badge">{{likes}}</span></button></li>
