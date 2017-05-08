@@ -103,6 +103,11 @@ h3 {
 
 .panel-heading {
     opacity: 0.7;
+    padding: 9px 20px;
+}
+
+#single-post .panel-body {
+    padding: 20px 20px;
 }
 
 #all-posts-sortable {
@@ -166,7 +171,7 @@ h3 {
     padding: 4px 15px;
     font-size: 1.8rem;
     font-weight: bold;
-    z-index: 100;
+    z-index: 50;
 }
 
 .add-new-comment,
@@ -174,15 +179,19 @@ h3 {
 .delete-post,
 .home-from-single-post {
     float: right;
-    position: relative;
+    /*display: block;*/
+    /*font-size: 1.8rem;*/
+    /*font-weight: bold;*/
+    /*position: relative;
     top: 38px;
-    right: 3px;
-    display: block;
-    margin: 6px 0 5px 5px;
+    right: 3px;*/
+    margin: 10px 0 0 5px;
     padding: 4px 15px;
-    font-size: 1.8rem;
-    font-weight: bold;
-    z-index: 100;
+    z-index: 50;
+}
+
+.comments-count {
+    margin-top: 8px;
 }
 
 #comments .panel-title {
@@ -216,7 +225,7 @@ div.justified {
     text-decoration: none;
 }
 
-.fb-page{
+.fb-page {
     padding-bottom: 3%;
 }
 
@@ -230,4 +239,3 @@ div.justified {
     background-color: #e0e0e0;
     margin-top: 25px;
 }
-
