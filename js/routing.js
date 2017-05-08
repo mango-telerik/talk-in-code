@@ -16,11 +16,11 @@ var sammyApp = Sammy('#content', function() {
 
     this.get('#/', context => context.redirect('#/home'));
 
-    this.get('#/home', context => loader.loadHomePage(context, false, false));
+    this.get('#/home', context => loader.loadHomePage(context, false, false, false));
 
-    this.get('#/home/:category', function(context) { loader.loadHomePage(context, this.params["category"], false); });
+    this.get('#/home/:category', function(context) { loader.loadHomePage(context, this.params["category"], false, false); });
 
-    this.get('#/home/all/:author', function(context) { loader.loadHomePage(context, false, this.params["author"]); });
+    this.get('#/home/all/:author', function(context) { loader.loadHomePage(context, false, this.params["author"], false); });
 
     this.get('#/login', context => loader.loadLoginMenu(context));
 
@@ -36,13 +36,18 @@ var sammyApp = Sammy('#content', function() {
 
     this.get('#/comments/:commentid/edit', function(context) { loader.loadEditComment(context, this.params["commentid"]); });
 
+
+    this.get('#/page/:pageid', function(context) { loader.loadHomePage(context, false, false, this.params["pageid"]); });
+
     this.get('#/posts/:postid/delete', function(context) { loader.deletePost(context, this.params["postid"]); });
 
     this.get('#/comments/:postid/:commentid/delete', function(context) { loader.deleteComment(context, this.params["postid"], this.params["commentid"]); });
+
 });
 
 let loader = {
-    loadHomePage: function(context, category, author) {
+    loadHomePage: function(context, category, author, page) {
+
         data.posts.getPosts(category, author)
             .then(info => templates.get("home")
                 .then(template => {
@@ -67,6 +72,7 @@ let loader = {
                     }
                 })
             );
+
     },
     loadLoginMenu: function(context) {
         templates.get("login")
