@@ -51,9 +51,14 @@ let loader = {
         data.posts.getPosts(category, author)
             .then(info => templates.get("home")
                 .then(template => {
+                    let allPosts = { info };
+                    if (category) {
+                        allPosts.currentCategory = "/ " + category;
+                    }
+                    console.log(info);
                     $content
                         .find("#main-content")
-                        .html(template({ info }));
+                        .html(template(allPosts));
                 })
                 .then(() => {
                     // TODO: separate logic on different file

@@ -25,11 +25,33 @@ li {
     list-style: none;
 }
 
+h3 {
+    font-size: 1.5em;
+    display: inline-block;
+    font-weight: bold;
+    margin: 5px 0 3px 0;
+    padding: 6px 10px;
+    color: white;
+    background-color: rgba(36, 41, 46, 0.5);
+    border-radius: 5px;
+}
+
+h3.main-heading {
+    font-size: 2em;
+    color: black;
+    background: none;
+}
+
+h4 {
+    font-size: 16px;
+    margin: 0;
+    color: grey;
+}
+
 .btn>a {
     text-decoration: none;
     color: inherit;
 }
-
 
 .loader {
     position: fixed;
@@ -38,7 +60,7 @@ li {
     width: 100%;
     height: 100%;
     z-index: 9999;
-    background: url('/images/Preloader_3.gif') 50% 50% no-repeat rgb(249,249,249);
+    background: url('/images/Preloader_3.gif') 50% 50% no-repeat rgb(249, 249, 249);
 }
 
 #content {
@@ -79,23 +101,6 @@ li {
     padding: 5px 20px;
     color: #666;
     background-color: #e0e0e0;
-}
-
-h4 {
-    font-size: 16px;
-    margin: 0;
-    color: grey;
-}
-
-h3 {
-    font-size: 20px;
-    display: inline-block;
-    font-weight: bold;
-    margin: 5px 0 3px 0;
-    padding: 6px 10px;
-    color: white;
-    background-color: rgba(36, 41, 46, 0.5);
-    border-radius: 5px;
 }
 
 .panel {
