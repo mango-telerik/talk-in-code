@@ -57,6 +57,16 @@ h4 {
     color: inherit;
 }
 
+.comments-count {
+    margin-top: 8px;
+    padding-top: 2px;
+}
+
+.comments-count .badge {
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
 .loader {
     position: fixed;
     left: 0px;
@@ -213,10 +223,6 @@ h4 {
     margin: 10px 0 0 5px;
     padding: 4px 15px;
     z-index: 50;
-}
-
-.comments-count {
-    margin-top: 8px;
 }
 
 #comments .panel-title {
