@@ -321,9 +321,30 @@ function deletePost(id) {
     const options = {
         headers: KINVEY.USERS_HEADER_DELETE
     };
-    let query = `?query={"postid":${id}}`;
-    const url = KINVEY.URLS.postsUrl + query;
+
+    let postQuery = `?query={"_id":"${id}"}`;
+    const postUrl = KINVEY.URLS.postsUrl + postQuery;
+
+    let commQuery = `?query={"postid":"${id}"}`;
+    const commUrl = KINVEY.URLS.commentsUrl + commQuery;
+
+    return jsonRequester.del(postUrl, options)
+        .then(jsonRequester.del(commUrl, options))
+        .then(function(res) {
+            return res;
+        });
+}
+
+function deleteComment(id) {
+    const options = {
+        headers: KINVEY.USERS_HEADER_DELETE
+    };
+    let query = `?query={"_id":"${id}"}`;
+    const url = KINVEY.URLS.commentsUrl + query;
     return jsonRequester.del(url, options)
+        .then(function(res) {
+            return res;
+        });
 }
 
 let users = {
@@ -337,16 +358,22 @@ let users = {
 let posts = {
     getPosts,
     addPost,
+    getSinglePost,
+    editPost,
+    deletePost,
+
+};
+
+let comments = {
     addCommentToPost,
     getPostComments,
-    getSinglePost,
     getComment,
     editCommentToPost,
-    editPost,
-    deletePost
+    deleteComment
 };
 
 export {
     users,
-    posts
+    posts,
+    comments
 };

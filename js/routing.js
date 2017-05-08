@@ -55,7 +55,13 @@ var sammyApp = Sammy('#content', function() {
 
     this.get('#/comments/:commentid/edit', function(context) { loader.loadEditComment(context, this.params["commentid"]); });
 
+
     this.get('#/page/:pageid', function(context) { loader.loadHomePage(context, false, false, this.params["pageid"]); });
+
+    this.get('#/posts/:postid/delete', function(context) { loader.deletePost(context, this.params["postid"]); });
+
+    this.get('#/comments/:postid/:commentid/delete', function(context) { loader.deleteComment(context, this.params["postid"], this.params["commentid"]); });
+
 });
 
 let loader = {
@@ -206,7 +212,7 @@ let loader = {
                 let currentPost = posts[0];
                 localStorage.setItem(CURRENT_POST, JSON.stringify(currentPost));
                 let currentPostId = currentPost._id;
-                data.posts.getPostComments(currentPostId)
+                data.comments.getPostComments(currentPostId)
                     .then(comments => {
                         currentPost.comments = comments;
                         return currentPost;
@@ -234,16 +240,16 @@ let loader = {
 
                         })
                     );
-                $(".delete-post").on("click", function() {
-                    data.posts.deletePost(postid)
-                        .then(function() {
-                            toastr.success("Deleted!");
-                            setTimeout(function() {
-                                context.redirect("#/");
-                                document.location.reload(true);
-                            }, 1000);
-                        });
-                });
+                // $(".delete-post").on("click", function() {
+                //     data.posts.deletePost(postid)
+                //         .then(function() {
+                //             toastr.success("Deleted!");
+                //             setTimeout(function() {
+                //                 context.redirect("#/");
+                //                 document.location.reload(true);
+                //             }, 1000);
+                //         });
+                // });
 
             });
     },
@@ -264,11 +270,9 @@ let loader = {
 
         $("body").on("click", "#add-comment-request-button", function(ev) {
             let label = $("#tb-comment-label").val();
-            console.log(tinymce.get("post-content-field"));
             let content = tinymce.get("post-content-field").getContent();
             const comment = new Comment({ username: author }, content, 0, label);
-            console.log(JSON.stringify(comment));
-            data.posts.addCommentToPost(comment, postid)
+            data.comments.addCommentToPost(comment, postid)
                 .then(function() {
                     toastr.success("You have created a new comment!", "Success!");
                     setTimeout(function() {
@@ -326,7 +330,7 @@ let loader = {
         });
     },
     loadEditComment: function(context, commentid) {
-        data.posts.getComment(commentid)
+        data.comments.getComment(commentid)
             .then(currentComments => {
                 console.log(currentComments);
                 templates.get("edit-comment")
@@ -349,7 +353,7 @@ let loader = {
                     let content = tinymce.get("post-content-field").getContent();
                     const comment = new Comment(author, content, 0, label);
 
-                    data.posts.editCommentToPost(comment, commentid, currentComment.postid)
+                    data.comments.editCommentToPost(comment, commentid, currentComment.postid)
                         .then(function() {
                             toastr.success("You have edited your comment!", "Success!");
                             setTimeout(function() {
@@ -363,6 +367,39 @@ let loader = {
                             toastr.error(err);
                         });
                 });
+            });
+    },
+    deletePost: function(context, id) {
+        data.posts.deletePost(id)
+            .then(() => {
+                $("#myModal").modal('hide');
+                toastr.success("Your post was deleted!", "Success!");
+                setTimeout(function() {
+                    context.redirect("#/");
+                    document.location.reload(true);
+                }, 1000);
+            })
+            .catch(err => {
+                if (typeof err === "object") {
+                    err = err.responseText;
+                }
+                toastr.error(err, "Error!");
+            });
+    },
+    deleteComment: function(context, postid, id) {
+        data.comments.deleteComment(id)
+            .then(() => {
+                toastr.success("Your comment was deleted!", "Success!");
+                setTimeout(function() {
+                    context.redirect("#/posts/" + postid);
+                    document.location.reload(true);
+                }, 1000);
+            })
+            .catch(err => {
+                if (typeof err === "object") {
+                    err = err.responseText;
+                }
+                toastr.error(err, "Error!");
             });
     }
 };
