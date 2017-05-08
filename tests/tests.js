@@ -58,7 +58,7 @@ const URL = {
 };
 
 describe("User tests", function() {
-    describe("data.register() tests", function() {
+    describe("data.users.register() tests", function() {
         beforeEach(() => {
             sinon.stub(jsonRequester, 'post', user => {
                 return new Promise(function(resolve, reject) {
@@ -90,12 +90,16 @@ describe("User tests", function() {
         it('(3) Expect: data.users.register() to put correct user data', function(done) {
             data.users.register(user)
                 .then(() => {
-                    const actual = jsonRequester.post.firstCall.args[1];
+                    const actual = jsonRequester.post.firstCall.args[1].data;
                     const props = Object.keys(actual).sort();
 
-                    expect(props.length).to.equal(2);
-                    expect(props[0]).to.equal('data');
-                    expect(props[1]).to.equal('headers');
+                    expect(props.length).to.equal(6);
+                    expect(props[0]).to.equal('comments');
+                    expect(props[1]).to.equal('credential');
+                    expect(props[2]).to.equal('email');
+                    expect(props[3]).to.equal('password');
+                    expect(props[4]).to.equal('posts');
+                    expect(props[5]).to.equal('username');
                 })
                 .then(done, done);
         });
@@ -135,12 +139,12 @@ describe("User tests", function() {
         it('(3) Expect: data.users.signIn() to put correct user data', function(done) {
             data.users.signIn(user)
                 .then(() => {
-                    const actual = jsonRequester.post.firstCall.args[1];
+                    const actual = jsonRequester.post.firstCall.args[1].data;
                     const props = Object.keys(actual).sort();
 
                     expect(props.length).to.equal(2);
-                    expect(props[0]).to.equal('data');
-                    expect(props[1]).to.equal('headers');
+                    expect(props[0]).to.equal('password');
+                    expect(props[1]).to.equal('username');
                 })
                 .then(done, done);
         });
