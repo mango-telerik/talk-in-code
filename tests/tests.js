@@ -28,6 +28,7 @@ const author = "admin",
     content = "some content",
     bad_content = "c",
     likes = 5,
+    label = "info",
     _kmd = {},
     _id = "123456789";
 
@@ -49,6 +50,14 @@ const post = {
     likes: likes
 };
 
+const comment = {
+    author: author,
+    content: content,
+    label: label,
+    postid: 13,
+    likes: likes
+};
+
 const RESULT = [];
 
 
@@ -63,6 +72,7 @@ const URL = {
     GET_POST_BY_AUTHOR: BASE.POSTS + `?query={"author.username":"${author}"}`,
     GET_POST_BY_CATEGORY: BASE.POSTS + `?query={"category":"${category}"}`,
     EDIT_POST: BASE.POSTS + id,
+    EDIT_COMMENT: BASE.COMMENTS + id,
     GET_POST_COMMENTS: BASE.COMMENTS + `?query={"postid":"${id}"}`,
     GET_POST_BY_ID: BASE.POSTS + `?query={"_id":"${id}"}`,
     GET_COMMENT_BY_ID: BASE.COMMENTS + `?query={"_id":"${id}"}`,
@@ -466,6 +476,52 @@ describe("Forum post comments tests", function() {
             data.comments.getComment(id)
                 .then(obj => {
                     expect(obj).to.eql(RESULT);
+                })
+                .then(done, done);
+        });
+    });
+
+    describe("data.comments.editCommentToPost(id) tests", function() {
+        beforeEach(() => {
+            sinon.stub(jsonRequester, 'put', user => {
+                return new Promise(function(resolve, reject) {
+                    resolve(comment);
+                });
+            });
+        });
+
+        afterEach(() => {
+            jsonRequester.put.restore();
+        });
+
+        it('(1) Expect: data.comments.editCommentToPost(id) to make correct PUT call', function(done) {
+            data.comments.editCommentToPost(comment, id)
+                .then(() => {
+                    expect(jsonRequester.put.firstCall.args[0]).to.equal(URL.EDIT_COMMENT);
+                })
+                .then(done, done);
+        });
+
+        it('(2) Expect: data.comments.editCommentToPost(id) to make exactly one PUT call', function(done) {
+            data.comments.editCommentToPost(comment)
+                .then((res) => {
+                    expect(jsonRequester.put.calledOnce).to.be.true;
+                })
+                .then(done, done);
+        });
+
+        it('(3) Expect: data.comments.editCommentToPost(id) to put correct user data', function(done) {
+            data.comments.editCommentToPost(comment)
+                .then(() => {
+                    const actual = jsonRequester.put.firstCall.args[1].data;
+                    const props = Object.keys(actual).sort();
+
+                    expect(props.length).to.equal(5);
+                    expect(props[0]).to.equal('author');
+                    expect(props[1]).to.equal('content');
+                    expect(props[2]).to.equal('label');
+                    expect(props[3]).to.equal('likes');
+                    expect(props[4]).to.equal('postid');
                 })
                 .then(done, done);
         });
