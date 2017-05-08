@@ -41,20 +41,26 @@ const user = {
     _kmd: { authtoken: "987654321" }
 };
 
-const URL = {
+const RESULT = [];
+
+
+const BASE = {
     LOGIN: "https://baas.kinvey.com/user/kid_HyNeqo4kZ/login/",
     REGISTER: "https://baas.kinvey.com/user/kid_HyNeqo4kZ",
-    CREATE_POST: "https://baas.kinvey.com/posts/kid_HyNeqo4kZ",
-    CREATE_COMMENT: "https://baas.kinvey.com/comments/kid_HyNeqo4kZ",
-    GET_POST_BY_AUTHOR: KINVEY.URLS.postsUrl + `?query={"author.username":"${author}"}`,
-    GET_POST_BY_CATEGORY: KINVEY.URLS.postsUrl + `?query={"category":"${category}"}`,
-    EDIT_POST: KINVEY.URLS.commentsURL + id,
-    GET_POST_COMMENTS: KINVEY.URLS.commentsURL + `?query={"postid":"${id}"}`,
-    GET_POST_BY_ID: KINVEY.URLS.postsUrl + `?query={"_id":"${id}"}`,
-    GET_COMMENT_BY_ID: KINVEY.URLS.commentsURL + `?query={"_id":"${id}"}`,
-    DELETE_COMMENTS_OF_POST: KINVEY.URLS.commentsUrl + `?query={"postid":"${id}"}`,
-    DELETE_POST: KINVEY.URLS.postsUrl + `?query={"_id":"${id}"}`,
-    DELETE_COMMENT: KINVEY.URLS.commentsURL + `?query={"_id":"${id}"}`
+    POSTS: "https://baas.kinvey.com/appdata/kid_HyNeqo4kZ/posts/",
+    COMMENTS: "https://baas.kinvey.com/appdata/kid_HyNeqo4kZ/comments"
+};
+
+const URL = {
+    GET_POST_BY_AUTHOR: BASE.POSTS + `?query={"author.username":"${author}"}`,
+    GET_POST_BY_CATEGORY: BASE.POSTS + `?query={"category":"${category}"}`,
+    EDIT_POST: BASE.POSTS + id,
+    GET_POST_COMMENTS: BASE.COMMENTS + `?query={"postid":"${id}"}`,
+    GET_POST_BY_ID: BASE.POSTS + `?query={"_id":"${id}"}`,
+    GET_COMMENT_BY_ID: BASE.COMMENTS + `?query={"_id":"${id}"}`,
+    DELETE_COMMENTS_OF_POST: BASE.COMMENTS + `?query={"postid":"${id}"}`,
+    DELETE_POST: BASE.POSTS + `?query={"_id":"${id}"}`,
+    DELETE_COMMENT: BASE.COMMENTS + `?query={"_id":"${id}"}`
 };
 
 describe("User tests", function() {
@@ -74,7 +80,7 @@ describe("User tests", function() {
         it('(1) Expect: data.users.register() to make correct POST call', function(done) {
             data.users.register(user)
                 .then(() => {
-                    expect(jsonRequester.post.firstCall.args[0]).to.equal(URL.REGISTER);
+                    expect(jsonRequester.post.firstCall.args[0]).to.equal(BASE.REGISTER);
                 })
                 .then(done, done);
         });
@@ -123,7 +129,7 @@ describe("User tests", function() {
         it('(1) Expect: data.users.signIn() to make correct POST call', function(done) {
             data.users.signIn(user)
                 .then(() => {
-                    expect(jsonRequester.post.firstCall.args[0]).to.equal(URL.LOGIN);
+                    expect(jsonRequester.post.firstCall.args[0]).to.equal(BASE.LOGIN);
                 })
                 .then(done, done);
         });
@@ -149,6 +155,126 @@ describe("User tests", function() {
                 .then(done, done);
         });
     });
+});
+
+describe("Forum posts tests", function() {
+    describe("data.posts.getPosts() tests", function() {
+        beforeEach(() => {
+            sinon.stub(jsonRequester, "get", user => {
+                return new Promise(function(resolve, reject) {
+                    resolve(RESULT);
+                });
+            });
+        });
+
+        afterEach(function() {
+            jsonRequester.get.restore();
+        });
+
+        it('(1) Expect: data.posts.getPosts() to make correct GET call', function(done) {
+            data.posts.getPosts()
+                .then(() => {
+                    expect(jsonRequester.get.firstCall.args[0]).to.equal(BASE.POSTS);
+                })
+                .then(done, done);
+        });
+
+        it('(2) Expect: data.posts.getPosts() to make exactly one GET call', function(done) {
+            data.posts.getPosts()
+                .then((res) => {
+                    expect(jsonRequester.get.calledOnce).to.be.true;
+                })
+                .then(done, done);
+        });
+
+        it('(3) expect data.posts.getPosts() to return correct result', function(done) {
+            data.posts.getPosts()
+                .then(obj => {
+                    expect(obj).to.eql(RESULT);
+                })
+                .then(done, done);
+        });
+    });
+
+    describe("data.posts.getPosts(author) tests", function() {
+        beforeEach(() => {
+            sinon.stub(jsonRequester, "get", user => {
+                return new Promise(function(resolve, reject) {
+                    resolve(RESULT);
+                });
+            });
+        });
+
+        afterEach(function() {
+            jsonRequester.get.restore();
+        });
+
+        it('(1) Expect: data.posts.getPosts(author) to make correct GET call', function(done) {
+            data.posts.getPosts(null, author)
+                .then(() => {
+                    expect(jsonRequester.get.firstCall.args[0]).to.equal(URL.GET_POST_BY_AUTHOR);
+                })
+                .then(done, done);
+        });
+
+        it('(2) Expect: data.posts.getPosts(author) to make exactly one GET call', function(done) {
+            data.posts.getPosts(null, author)
+                .then((res) => {
+                    expect(jsonRequester.get.calledOnce).to.be.true;
+                })
+                .then(done, done);
+        });
+
+        it('(3) expect data.posts.getPosts(author) to return correct result', function(done) {
+            data.posts.getPosts(null, author)
+                .then(obj => {
+                    expect(obj).to.eql(RESULT);
+                })
+                .then(done, done);
+        });
+    });
+
+    describe("data.posts.getPosts(category) tests", function() {
+        beforeEach(() => {
+            sinon.stub(jsonRequester, "get", user => {
+                return new Promise(function(resolve, reject) {
+                    resolve(RESULT);
+                });
+            });
+        });
+
+        afterEach(function() {
+            jsonRequester.get.restore();
+        });
+
+        it('(1) Expect: data.posts.getPosts(category) to make correct GET call', function(done) {
+            data.posts.getPosts(category, null)
+                .then(() => {
+                    expect(jsonRequester.get.firstCall.args[0]).to.equal(URL.GET_POST_BY_CATEGORY);
+                })
+                .then(done, done);
+        });
+
+        it('(2) Expect: data.posts.getPosts(category) to make exactly one GET call', function(done) {
+            data.posts.getPosts(category, null)
+                .then((res) => {
+                    expect(jsonRequester.get.calledOnce).to.be.true;
+                })
+                .then(done, done);
+        });
+
+        it('(3) expect data.posts.getPosts(category) to return correct result', function(done) {
+            data.posts.getPosts(category, null)
+                .then(obj => {
+                    expect(obj).to.eql(RESULT);
+                })
+                .then(done, done);
+        });
+    });
+});
+
+describe("Forum post comments tests", function() {
+
 });
 
 mocha.run();

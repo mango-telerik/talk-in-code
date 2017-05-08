@@ -50,35 +50,45 @@ let loader = {
     loadHomePage: function(context, category, author) {
 
         data.posts.getPosts(category, author)
-            .then(info => templates.get("home")
-                .then(template => {
-                    let allPosts = { info };
-                    if (category) {
-                        allPosts.currentCategory = "/ " + category;
-                    }
-                    $content
-                        .find("#main-content")
-                        .html(template(allPosts));
-                    $(window).scrollTop(0);
-                })
-                .then(() => {
-                    // TODO: separate logic on different file
-                    // $("#all-posts-sortable").sortable();
-                    let signedUser = localStorage.getItem(USERNAME_LOCAL_STORAGE);
-                    if (!signedUser) {
-                        $("#login-button").show();
-                        $("#add-new-thread").hide();
-                        $("#logout-button").hide();
-                        $("#login-info").hide();
-                    } else {
-                        $("#logout-button").show();
-                        $("#login-info").show();
-                        $("#add-new-thread").show();
-                        $("#login-button").hide();
-                    }
-                })
-            );
+            .then(info => {
+                if (localStorage.CURRENT_POST) {
+                    localStorage.removeItem(CURRENT_POST);
+                }
 
+                for (let i = 0; i < info.length; i += 1) {
+                    var createdate = new Date(info[i]._kmd.ect);
+                    info[i]._kmd.ect = moment(createdate).format('YYYY-MM-DD HH:mm');
+                }
+
+                templates.get("home")
+
+                .then(template => {
+                        let allPosts = { info };
+                        if (category) {
+                            allPosts.currentCategory = "/ " + category;
+                        }
+                        $content
+                            .find("#main-content")
+                            .html(template(allPosts));
+                        $(window).scrollTop(0);
+                    })
+                    .then(() => {
+                        // TODO: separate logic on different file
+                        // $("#all-posts-sortable").sortable();
+                        let signedUser = localStorage.getItem(USERNAME_LOCAL_STORAGE);
+                        if (!signedUser) {
+                            $("#login-button").show();
+                            $("#add-new-thread").hide();
+                            $("#logout-button").hide();
+                            $("#login-info").hide();
+                        } else {
+                            $("#logout-button").show();
+                            $("#login-info").show();
+                            $("#add-new-thread").show();
+                            $("#login-button").hide();
+                        }
+                    });
+            });
     },
     loadLoginMenu: function(context) {
         templates.get("login")

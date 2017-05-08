@@ -157,14 +157,14 @@ function getPosts(category, author) {
     // make the request and return promise
     return jsonRequester.get(url, options)
         .then(function(res) {
-            if (localStorage.CURRENT_POST) {
-                localStorage.removeItem(CURRENT_POST);
-            }
+            // if (localStorage.CURRENT_POST) {
+            //     localStorage.removeItem(CURRENT_POST);
+            // }
 
-            for (let i = 0; i < res.length; i += 1) {
-                var createdate = new Date(res[i]._kmd.ect);
-                res[i]._kmd.ect = moment(createdate).format('YYYY-MM-DD HH:mm');
-            }
+            // for (let i = 0; i < res.length; i += 1) {
+            //     var createdate = new Date(res[i]._kmd.ect);
+            //     res[i]._kmd.ect = moment(createdate).format('YYYY-MM-DD HH:mm');
+            // }
             return res;
         });
 }
