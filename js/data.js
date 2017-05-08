@@ -347,6 +347,60 @@ function deleteComment(id) {
         });
 }
 
+function addPostLike(id) {
+    return getSinglePost(id)
+        .then(posts => {
+            let reqPost = posts[0];
+            // create options
+            const options = {
+                data: {
+                    title: reqPost.title,
+                    author: reqPost.author,
+                    content: reqPost.content,
+                    category: reqPost.category,
+                    likes: (+reqPost.likes + 1)
+                },
+                headers: KINVEY.POSTS_HEADER
+            };
+
+            // provide url
+            const url = KINVEY.URLS.postsUrl + id;
+
+            // make request and return promise
+            return jsonRequester.put(url, options)
+                .then(function(res) {
+                    return res;
+                });
+        });
+}
+
+function addCommentLike(id) {
+    return getComment(id)
+        .then(comments => {
+            let reqComment = comments[0];
+            // create options
+            const options = {
+                data: {
+                    author: reqComment.author,
+                    content: reqComment.content,
+                    label: reqComment.label,
+                    postid: reqComment.postid,
+                    likes: (+reqComment.likes + 1)
+                },
+                headers: KINVEY.POSTS_HEADER
+            };
+
+            // provide url
+            const url = KINVEY.URLS.commentsUrl + id;
+
+            // make request and return promise
+            return jsonRequester.put(url, options)
+                .then(function(res) {
+                    return res;
+                });
+        });
+}
+
 let users = {
     register,
     signIn,
@@ -361,7 +415,7 @@ let posts = {
     getSinglePost,
     editPost,
     deletePost,
-
+    addPostLike
 };
 
 let comments = {
@@ -369,7 +423,8 @@ let comments = {
     getPostComments,
     getComment,
     editCommentToPost,
-    deleteComment
+    deleteComment,
+    addCommentLike
 };
 
 export {
