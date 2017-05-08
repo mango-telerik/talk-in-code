@@ -47,6 +47,10 @@
     margin-right: 5px;
 }
 
+.author-title {
+    padding-bottom: 15px;
+}
+
 .editor-title {
     padding: 5px;
     text-align: center;

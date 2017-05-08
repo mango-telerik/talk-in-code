@@ -40,7 +40,7 @@
             </header>
             <div class="panel-body">
                 <main class="posts-content">
-                    <h4>Author: <a href="#/home/all/{{author.username}}">{{author.username}}</a></h4>
+                    <h4 class="author-title">Author: <a href="#/home/all/{{author.username}}">{{author.username}}</a></h4>
                     <article>{{{content}}}</article>
                 </main>
                 <footer class="posts-footer">
@@ -50,8 +50,7 @@
                         </li>
                         <li role="presentation" class="category-info"><span class="btn btn-warning"><a href="#/home/{{category}}">{{category}}</a></span></li>
                     </ul>
-
-                    <ul class="pagination"></ul>
+                    {{!--<ul class="pagination"></ul>--}}
                 </footer>
 
             </div>
