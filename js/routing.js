@@ -36,7 +36,6 @@ var sammyApp = Sammy('#content', function() {
 
     this.get('#/comments/:commentid/edit', function(context) { loader.loadEditComment(context, this.params["commentid"]); });
 
-
     this.get('#/page/:pageid', function(context) { loader.loadHomePage(context, false, false, this.params["pageid"]); });
 
     this.get('#/posts/:postid/delete', function(context) { loader.deletePost(context, this.params["postid"]); });
@@ -59,6 +58,7 @@ let loader = {
                     $content
                         .find("#main-content")
                         .html(template(allPosts));
+                    $(window).scrollTop(0);
                 })
                 .then(() => {
                     // TODO: separate logic on different file
