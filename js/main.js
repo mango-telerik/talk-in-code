@@ -47,4 +47,29 @@ import * as data from "data";
                 toastr.error(err, "Error!");
             });
     });
+
+    // add likes
+    $("body").on("click", ".add-post-like", (ev) => {
+        let postId = $(ev.target).attr("id");
+        console.log(postId);
+        data.posts.addPostLike(postId)
+            .then(() => {
+                let $likeContainer = $("#" + postId + ">span");
+                let likes = +$likeContainer.html() + 1;
+                $likeContainer.html(likes);
+                toastr.success("You liked the post! Thank you!", "Success!");
+            });
+    });
+
+    $("body").on("click", ".add-comment-like", (ev) => {
+        let commentId = $(ev.target).attr("id");
+        console.log(commentId);
+        data.comments.addCommentLike(commentId)
+            .then(() => {
+                let $likeContainer = $("#" + commentId + ">span");
+                let likes = +$likeContainer.html() + 1;
+                $likeContainer.html(likes);
+                toastr.success("You liked the comment! Thank you!", "Success!");
+            });
+    });
 })();

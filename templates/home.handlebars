@@ -1,5 +1,9 @@
 <a href="#/posts/add" class="add-new-thread btn btn-primary" id="add-new-thread">Add new post</a>
-<h3>// forum posts</h3>
+{{#if currentCategory}}
+<h3 class="main-heading">[ forum posts {{currentCategory}} ]</h3>
+{{else}}
+<h3 class="main-heading">[ forum posts ]</h3>
+{{/if}}
 
 <div class="row-paging">
     {{#pages}}
@@ -41,7 +45,9 @@
                 </main>
                 <footer class="posts-footer">
                     <ul class="nav nav-pills" role="tablist">
-                        <li role="presentation" class="add-like-container active"><button class="add-like btn btn-primary">Like <span class="badge">{{likes}}</span></button></li>
+                        <li role="presentation" class="add-like-container active">
+                            <button class="add-post-like btn btn-primary" id="{{_id}}">Like <span class="badge">{{likes}}</span></button>
+                        </li>
                         <li role="presentation" class="category-info"><span class="btn btn-warning"><a href="#/home/{{category}}">{{category}}</a></span></li>
                     </ul>
 
