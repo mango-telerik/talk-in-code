@@ -31,10 +31,7 @@ li {
 }
 
 #content {
-    overflow-y: scroll;
-    margin-top: 15%;
-    margin-right: 10%;
-    margin-left: 10%;
+    margin: 100px 10% 0 10%;
     overflow: hidden;
 }
 

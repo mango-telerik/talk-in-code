@@ -2,6 +2,26 @@ import { sammyApp, loader } from "router";
 import * as data from "data";
 
 (function() {
+    // configure toastr
+    // http://codeseven.github.io/toastr/demo.html
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-center",
+        "preventDuplicates": true,
+        "onclick": null,
+        "showDuration": "50",
+        "hideDuration": "50",
+        "timeOut": "1200",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "slideDown",
+        "hideMethod": "slideUp"
+    };
+
     // start router
     sammyApp.run('#/');
 

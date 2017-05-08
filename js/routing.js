@@ -11,25 +11,6 @@ import {
 
 const $content = $("#content");
 
-// http://codeseven.github.io/toastr/demo.html
-toastr.options = {
-    "closeButton": false,
-    "debug": false,
-    "newestOnTop": false,
-    "progressBar": false,
-    "positionClass": "toast-top-center",
-    "preventDuplicates": true,
-    "onclick": null,
-    "showDuration": "50",
-    "hideDuration": "50",
-    "timeOut": "1200",
-    "extendedTimeOut": "1000",
-    "showEasing": "swing",
-    "hideEasing": "linear",
-    "showMethod": "slideDown",
-    "hideMethod": "slideUp"
-};
-
 var sammyApp = Sammy('#content', function() {
     this.get('/', context => context.redirect('#/home'));
 
@@ -216,6 +197,7 @@ let loader = {
                             $content
                                 .find("#main-content")
                                 .html(template(postWithComments));
+                            $(window).scrollTop(0);
                         })
                         .then(() => {
                             $(".add-new-comment").hide();
@@ -234,17 +216,6 @@ let loader = {
 
                         })
                     );
-                // $(".delete-post").on("click", function() {
-                //     data.posts.deletePost(postid)
-                //         .then(function() {
-                //             toastr.success("Deleted!");
-                //             setTimeout(function() {
-                //                 context.redirect("#/");
-                //                 document.location.reload(true);
-                //             }, 1000);
-                //         });
-                // });
-
             });
     },
     loadCreateComment: function(context, postid) {
@@ -366,11 +337,11 @@ let loader = {
     deletePost: function(context, id) {
         data.posts.deletePost(id)
             .then(() => {
-                $("#myModal").modal('hide');
+                $("#myPostsModal").modal('hide');
                 toastr.success("Your post was deleted!", "Success!");
                 setTimeout(function() {
                     context.redirect("#/");
-                    document.location.reload(true);
+                    //document.location.reload(true);
                 }, 1000);
             })
             .catch(err => {
@@ -383,10 +354,11 @@ let loader = {
     deleteComment: function(context, postid, id) {
         data.comments.deleteComment(id)
             .then(() => {
+                $("#myCommentsModal").modal('hide');
                 toastr.success("Your comment was deleted!", "Success!");
                 setTimeout(function() {
                     context.redirect("#/posts/" + postid);
-                    document.location.reload(true);
+                    //document.location.reload(true);
                 }, 1000);
             })
             .catch(err => {
