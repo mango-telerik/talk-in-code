@@ -17,9 +17,8 @@
     <script src="js/sidebar-javascript.js" type="text/javascript"></script>
 
     <script type="text/javascript">
-
-        $(function(){ // this replaces document.ready
-            setTimeout(function(){
+        $(function() { // this replaces document.ready
+            setTimeout(function() {
                 $('.loader').fadeOut('slow', function() {
                     $(this).remove();
                 });
@@ -32,9 +31,9 @@
 
 <body>
 
-<div class="loader"></div>
-<div id="fb-root-page"></div>
-<div id="wrapper">
+    <div class="loader"></div>
+    <div id="fb-root-page"></div>
+    <div id="wrapper">
         <div class="overlay"></div>
         <!--    Sidebar    -->
         <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
@@ -100,10 +99,10 @@
 
                 <div class="fb-page justified" data-href="https://www.facebook.com/Mango-forum-1423907267671219/" data-height="130" data-small-header="false" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="true">
                 </div>
-            <div class="container-fluid">
-                <aside id="aside"></aside>
+                <div class="container-fluid">
+                    <aside id="aside"></aside>
+                </div>
             </div>
-        </div>
         </div>
 
         <footer class="footer">
@@ -122,7 +121,7 @@
         <script src="./bower_components/jquery-ui/jquery-ui.min.js"></script>
         <script src="./bower_components/handlebars/handlebars.min.js"></script>
         <script src="./bower_components/crypto-js/crypto-js.js"></script>
-        <script src="./bower_components/moment/moment.js"></script>
+        <script src="./bower_components/moment/moment.min.js"></script>
         <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="./node_modules/systemjs/dist/system.js"></script>
         <script src="./js/system-config.js"></script>
