@@ -133,6 +133,7 @@ h4 {
     opacity: 0.7;
     padding: 9px 20px;
     border: none;
+    z-index: 10;
 }
 
 .panel-footer {
@@ -141,7 +142,8 @@ h4 {
     border: none;
 }
 
-#single-post .panel-body {
+#single-post .panel-body,
+.comments-panel .panel-body {
     padding: 20px 20px;
 }
 
@@ -220,9 +222,9 @@ h4 {
     /*position: relative;
     top: 38px;
     right: 3px;*/
-    margin: 10px 0 0 5px;
+    margin: 5px;
     padding: 4px 15px;
-    z-index: 50;
+    z-index: 60;
 }
 
 #comments .panel-title {

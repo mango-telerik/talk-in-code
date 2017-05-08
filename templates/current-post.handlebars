@@ -1,6 +1,6 @@
-<h3 class="main-heading">> {{title}}</h3>
-<a href="#/home" class="home-from-single-post btn btn-info">Home</a>
 <a href="#/posts/{{_id}}/comment" class="add-new-comment btn btn-primary">Add comment</a>
+<h3 class="main-heading">> {{title}}</h3>
+<a href="#/home" class="home-from-single-post btn btn-info hidden-xs">Home</a>
 <a href="#/posts/{{_id}}/edit" class="edit-post btn btn-primary" id="edit-post-{{author.username}}">Edit</a>
 <button type="button" class="delete-post btn btn-danger" id="delete-post-{{author.username}}" data-toggle="modal" data-target="#myPostsModal">Delete</button>
 
@@ -27,7 +27,7 @@
 <div id="single-post" class="panel panel-default">
     <header class="panel-heading">
         <h2 class="panel-title">Author: <strong><a href="#/home/all/{{author.username}}">{{author.username}}</a></strong></h2>
-        <h4 class="createdate">Created on: {{_kmd.ect}}</h4>
+        <h4 class="createdate hidden-xs">Created on: {{_kmd.ect}}</h4>
     </header>
     <div class="panel-body">
         <main class="posts-content">
@@ -38,7 +38,7 @@
         <footer class="posts-footer">
             <ul class="nav nav-pills" role="tablist">
                 <li role="presentation" class="add-like-container active"><button class="add-post-like btn btn-primary" id="{{_id}}">Like <span class="badge">{{likes}}</span></button></li>
-                <li role="presentation" class="comments-count">Comments <span class="badge">{{comments.length}}</span></li>
+                <li role="presentation" class="comments-count hidden-xs">Comments <span class="badge">{{comments.length}}</span></li>
                 <li role="presentation" class="category-info"><span class="btn btn-warning"><a href="#/home/{{category}}">{{category}}</a></span></li>
             </ul>
         </footer>
@@ -70,9 +70,9 @@
     </div>
 
     <li>
-        <div class="panel panel-{{label}}">
+        <div class="panel panel-{{label}} comments-panel">
             <header class="panel-heading">
-                <h4 class="createdate">Created on: {{_kmd.ect}}</h4>
+                <h4 class="createdate hidden-xs">Created: {{_kmd.ect}}</h4>
                 <h2 class="panel-title">Author: <strong><a href="#/home/all/{{author.username}}">{{author.username}}</a></strong></h2>
 
                 <a href="#/comments/{{_id}}/edit" class="edit-comment btn btn-info btn-xs edit-comment-{{author.username}}">Edit</a>
@@ -83,12 +83,12 @@
                 <main class="posts-content">
                     <article>{{{content}}}</article>
                 </main>
-    </div>
-    <div class="panel-footer">
+            </div>
+            <div class="panel-footer">
                 <footer class="posts-footer">
                     <ul class="nav nav-pills" role="tablist">
                         <li role="presentation" class="add-like-container active"><button class="add-comment-like btn btn-primary" id="{{_id}}">Like <span class="badge">{{likes}}</span></button></li>
-                        <li role="presentation" class="comments-count"><span class="badge">{{label}}</span></li>
+                        <li role="presentation" class="comments-count hidden-xs"><span class="badge">{{label}}</span></li>
                         <li role="presentation" class="category-info"><span class="btn btn-warning"><a href="#/home/{{../category}}">{{../category}}</a></span></li>
                     </ul>
                 </footer>
