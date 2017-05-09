@@ -262,6 +262,18 @@ div.justified {
     padding-bottom: 3%;
 }
 
+.facebook-button iframe {
+    width: 120px;
+}
+
+._2tga._3e2a {
+    height: 34px;
+}
+
+.facebook-button button>div {
+    padding: 9px;
+}
+
 .footer {
     position: fixed;
     bottom: 0;
