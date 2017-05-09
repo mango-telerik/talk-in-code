@@ -38,11 +38,6 @@
         <footer class="posts-footer">
             <ul class="nav nav-pills" role="tablist">
                 <li role="presentation" class="add-like-container active"><button class="add-post-like btn btn-primary" id="{{_id}}">Like <span class="badge">{{likes}}</span></button></li>
-                <li class="facebook-button"><iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=large&mobile_iframe=true&appId=160031291195492&width=120&height=34" width="120" height="34" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe></li>
-                <li><div class="fb-share-button"
-                         data-href="#/posts/{{_id}}"
-                         data-layout="button_count">
-                </div></li>
                 <li role="presentation" class="comments-count hidden-xs">Comments <span class="badge">{{comments.length}}</span></li>
                 <li role="presentation" class="category-info"><span class="btn btn-warning"><a href="#/home/{{category}}">{{category}}</a></span></li>
             </ul>
