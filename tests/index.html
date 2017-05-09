@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!--Meta tags for facebook-->
+    <meta property="og:url" content="http://vzb.my.contact.bg/tests/" />
+    <meta property="og:title" content="Team Mango-Telerik app test page" />
+    <meta property="og:description" content="The test page of mango/talk.in.code" />
+    <meta property="og:image" content="https://raw.githubusercontent.com/mango-telerik/talk-in-code-app/master/images/27736291.png" />
+    <meta property="og:image:width" content="400" />
+    <meta property="og:image:height" content="400" />
+    <!--End meta tags for facebook-->
+    <title>talk.in.code test page</title>
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/mocha-css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--tests container-->
+    <div id="mocha"></div>
+
+    <!--scripts-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.3/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.8/handlebars.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.20.12/system.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.3.0/mocha.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.min.js"></script>
+    <script src="./sinon-1.17.6.js"></script>
+    <script src="./system-config.js"></script>
+    <script>
+        System.import("tests");
+    </script>
+</body>
+
+</html>
