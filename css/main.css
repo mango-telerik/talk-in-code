@@ -294,3 +294,7 @@ div.justified {
     float: right;
     padding: 3px 15px;
 }
+
+.date-block {
+    color: #24292e;
+}

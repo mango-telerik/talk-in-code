@@ -27,7 +27,7 @@
 <div id="single-post" class="panel panel-default">
     <header class="panel-heading">
         <h2 class="panel-title">Author: <strong><a href="#/home/all/{{author.username}}">{{author.username}}</a></strong></h2>
-        <h4 class="createdate hidden-xs">Created on: {{_kmd.ect}}</h4>
+        <h4 class="createdate hidden-xs">Created: <span class="date-block">{{_kmd.ect}}</span></h4>
     </header>
     <div class="panel-body">
         <main class="posts-content">
@@ -77,7 +77,7 @@
     <li>
         <div class="panel panel-{{label}} comments-panel">
             <header class="panel-heading">
-                <h4 class="createdate hidden-xs">Created: {{_kmd.ect}}</h4>
+                <h4 class="createdate hidden-xs">Created: <span class="date-block">{{_kmd.ect}}</span></h4>
                 <h2 class="panel-title">Author: <strong><a href="#/home/all/{{author.username}}">{{author.username}}</a></strong></h2>
 
                 <a href="#/comments/{{_id}}/edit" class="edit-comment btn btn-info btn-xs edit-comment-{{author.username}}">Edit</a>
