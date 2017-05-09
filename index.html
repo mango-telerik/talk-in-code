@@ -17,7 +17,7 @@
     <script src="js/sidebar-javascript.js" type="text/javascript"></script>
 
     <script type="text/javascript">
-        $(function() { // this replaces document.ready
+        $(function() {
             setTimeout(function() {
                 $('.loader').fadeOut('slow', function() {
                     $(this).remove();
@@ -32,7 +32,14 @@
 <body>
 
     <div class="loader"></div>
-    <div id="fb-root-page"></div>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
     <div id="wrapper">
         <div class="overlay"></div>
         <!--    Sidebar    -->
@@ -96,9 +103,7 @@
         <div id="content">
             <div class="container-fluid">
                 <main id="main-content"></main>
-
-                <div class="fb-page justified" data-href="https://www.facebook.com/Mango-forum-1423907267671219/" data-height="130" data-small-header="false" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="true">
-                </div>
+                <div class="fb-page justified" data-href="https://www.facebook.com/talkincode-1423907267671219/" data-tabs="timeline" data-height="150" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/talkincode-1423907267671219/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/talkincode-1423907267671219/">talk.in.code</a></blockquote></div>
                 <div class="container-fluid">
                     <aside id="aside"></aside>
                 </div>
@@ -121,7 +126,7 @@
         <script src="./bower_components/jquery-ui/jquery-ui.min.js"></script>
         <script src="./bower_components/handlebars/handlebars.min.js"></script>
         <script src="./bower_components/crypto-js/crypto-js.js"></script>
-        <script src="./bower_components/moment/moment.min.js"></script>
+        <script src="./bower_components/moment/min/moment.min.js"></script>
         <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="./node_modules/systemjs/dist/system.js"></script>
         <script src="./js/system-config.js"></script>

@@ -4,30 +4,6 @@
 <h3 class="main-heading">[ forum posts ]</h3>
 {{/if}}
 
-<div class="row-paging">
-    {{#pages}}
-    <a class="button-paging" style="color:white;" href="#/?page={{.}}">Page {{.}}</a> {{/pages}}
-</div>
-<nav aria-label="Page navigation">
-    <ul class="pagination">
-        <li>
-            <a href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        <li><a href="#/posts/page1">1</a></li>
-        <li><a href="#/posts/page2">2</a></li>
-        <li><a href="#/posts/page3">3</a></li>
-        <li><a href="#/posts/page4">4</a></li>
-        <li><a href="#/posts/page5">5</a></li>
-        <li>
-            <a href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-            </a>
-        </li>
-    </ul>
-</nav>
-
 <ul id="all-posts-sortable">
     {{#each info}}
     <li class="post-row">
