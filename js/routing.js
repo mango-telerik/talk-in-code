@@ -44,6 +44,8 @@ var sammyApp = Sammy('#content', function() {
 
     this.get('#/comments/:postid/:commentid/delete', function(context) { loader.deleteComment(context, this.params["postid"], this.params["commentid"]); });
 
+    this.get('#/contacts', context => loader.loadContacts(context));
+
 });
 
 let loader = {
@@ -392,6 +394,15 @@ let loader = {
                     err = err.responseText;
                 }
                 toastr.error(err, "Error!");
+            });
+    },
+    loadContacts(context) {
+        templates.get("contacts")
+            .then(template => {
+                context
+                    .$element()
+                    .find("#main-content")
+                    .html(template());
             });
     }
 };
