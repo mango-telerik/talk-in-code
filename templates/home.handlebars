@@ -1,0 +1,36 @@
+<a href="#/posts/add" class="add-new-thread btn btn-primary" id="add-new-thread">Add new post</a> {{#if currentCategory}}
+<h3 class="main-heading">[ forum posts {{currentCategory}} ]</h3>
+{{else}}
+<h3 class="main-heading">[ forum posts ]</h3>
+{{/if}}
+
+<ul id="all-posts-sortable">
+    {{#each info}}
+    <li class="post-row">
+        <div class="panel panel-default">
+            <header class="panel-heading">
+                <h2 class="panel-title"><a href="#/posts/{{_id}}"><strong>{{title}}</strong></a></h2>
+                <h4 class="createdate hidden-xs">Created: {{_kmd.ect}}</h4>
+            </header>
+            <div class="panel-body">
+                <main class="posts-content">
+                    <h4 class="author-title">Author: <a href="#/home/all/{{author.username}}">{{author.username}}</a></h4>
+                    <article>{{{content}}}</article>
+                </main>
+            </div>
+            <div class="panel-footer">
+                <footer class="posts-footer">
+                    <ul class="nav nav-pills" role="tablist">
+                        <li role="presentation" class="add-like-container active">
+                            <button class="add-post-like btn btn-primary" id="{{_id}}">Like <span class="badge">{{likes}}</span></button>
+                        </li>
+                        <li role="presentation" class="category-info"><span class="btn btn-warning"><a href="#/home/{{category}}">{{category}}</a></span></li>
+                    </ul>
+                    {{!--
+                    <ul class="pagination"></ul>--}}
+                </footer>
+            </div>
+        </div>
+    </li>
+    {{/each}}
+</ul>
