@@ -403,6 +403,14 @@ let loader = {
                     .$element()
                     .find("#main-content")
                     .html(template());
+            })
+            .then(() => {
+                $("body").on("click", ".submit-cintact", function(ev) {
+                    toastr.success("Thank you for sending us your message!", "Success!");
+                    setTimeout(function() {
+                        context.redirect("#/");
+                    }, 1000);
+                });
             });
     }
 };
