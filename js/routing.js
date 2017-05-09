@@ -89,7 +89,7 @@ let loader = {
                             $("#add-new-thread").show();
                             $("#login-button").hide();
                         }
-                    });
+                    })
             });
     },
     loadLoginMenu: function(context) {
