@@ -1,5 +1,3 @@
-
-
 $(document).ready(function () {
     var trigger = $('.hamburger'),
         overlay = $('.overlay'),
@@ -9,7 +7,6 @@ $(document).ready(function () {
     trigger.click(function () {
         hamburger_cross();
     });
-
 
     function hamburger_cross() {
 
@@ -25,10 +22,7 @@ $(document).ready(function () {
             trigger.addClass('is-open');
             isClosed = true;
         }
-
     }
-
-
 
     $('[data-toggle="offcanvas"]').click(function () {
         $('#wrapper').toggleClass('toggled');
@@ -41,7 +35,5 @@ $(document).ready(function () {
         if( $('#wrapper').hasClass('toggled')){
             $('#wrapper').removeClass('toggled');
         }
-    })
-
-
+    });
 });

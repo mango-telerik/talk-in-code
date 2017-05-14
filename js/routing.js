@@ -270,7 +270,7 @@ let loader = {
                     toastr.success("You have created a new comment!", "Success!");
                     setTimeout(function() {
                         context.redirect("#/posts/" + postid);
-                        //document.location.reload(true);
+                        document.location.reload(true);
                     }, 1000);
                 }, function(err) {
                     if (typeof err === "object") {
@@ -382,7 +382,7 @@ let loader = {
     deleteComment: function(context, postid, id) {
         data.comments.deleteComment(id)
             .then(() => {
-                $("#myCommentsModal").modal('hide');
+                $("#myCommentsModal-" + id).modal('hide');
                 toastr.success("Your comment was deleted!", "Success!");
                 setTimeout(function() {
                     context.redirect("#/posts/" + postid);

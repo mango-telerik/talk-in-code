@@ -1,8 +1,8 @@
 <a href="#/posts/{{_id}}/comment" class="add-new-comment btn btn-primary">Add comment</a>
-<h3 class="main-heading-simple">> {{title}}</h3>
 <a href="#/home" class="home-from-single-post btn btn-info hidden-xs">Home</a>
 <a href="#/posts/{{_id}}/edit" class="edit-post btn btn-primary" id="edit-post-{{author.username}}">Edit</a>
 <button type="button" class="delete-post btn btn-danger" id="delete-post-{{author.username}}" data-toggle="modal" data-target="#myPostsModal">Delete</button>
+<h3 class="main-heading-simple">> {{title}}</h3>
 
 <!-- Modal for deleting posts -->
 <div id="myPostsModal" class="modal fade" role="dialog">
@@ -50,7 +50,7 @@
 <ul id="comments">
     {{#each comments}}
     <!-- Modal for deleting comments -->
-    <div id="myCommentsModal" class="modal fade" role="dialog">
+    <div id="myCommentsModal-{{_id}}" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
@@ -77,7 +77,7 @@
 
                 <a href="#/comments/{{_id}}/edit" class="edit-comment btn btn-info btn-xs edit-comment-{{author.username}}">Edit</a>
                 <button type="button" class="delete-comment btn btn-danger btn-xs delete-comment-{{author.username}}" data-toggle="modal"
-                    data-target="#myCommentsModal">Delete</button>
+                    data-target="#myCommentsModal-{{_id}}">Delete</button>
             </header>
             <div class="panel-body">
                 <main class="posts-content">

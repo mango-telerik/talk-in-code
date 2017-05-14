@@ -12,7 +12,7 @@ Telerik Academy "JS Applications" course teamwork project
 ## Introduction
 
 This is a simple forum application for developers who need to share their thoughts and experience from everyday life 
-The application is for educational use and represents Single Page Design with simple RESTful web services implemented
+The application is for educational use and represents Single Page Design with simple RESTful web services implemented  
 And much more cool introduction text here...
 
 ## instruction for installation
@@ -36,21 +36,23 @@ And much more cool introduction text here...
 - server and server side
     - users - YES
     - themes - NO
-    - posts - NO
+    - posts - YES
     - other - NO
 - user logic
     - login - YES
     - register - YES
     - logout - YES
-    - delete - NO
-- themes logic
-    - categories - NO
-    - create - NO
-    - delete - NO
-- posts logic 
+    - delete - YES
+- posts logic
+    - categories - YES
+    - create - YES
+    - delete - YES
+- comments logic 
+    - create - YES
+    - delete - YES
 - other logic
-    - facebook share - NO
-    - likes - NO
+    - facebook share - YES
+    - likes - YES
     - other - NO
 
 ## Teamwork members

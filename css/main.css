@@ -202,7 +202,8 @@ h4 {
     margin-top: 6px;
 }
 
-.add-new-thread {
+
+/*.add-new-thread {
     float: right;
     position: relative;
     top: -2px;
@@ -213,8 +214,9 @@ h4 {
     font-size: 1.8rem;
     font-weight: bold;
     z-index: 50;
-}
+}*/
 
+.add-new-thread,
 .add-new-comment,
 .edit-post,
 .delete-post,
@@ -261,7 +263,6 @@ div.justified {
 #forum-title {
     text-decoration: none;
 }
-
 
 .facebook-button iframe {
     width: 120px;
