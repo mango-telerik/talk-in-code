@@ -61,10 +61,21 @@ let loader = {
                     var createdate = new Date(info[i]._kmd.ect);
                     info[i]._kmd.ect = moment(createdate).format('YYYY-MM-DD HH:mm');
                 }
+                // sort
+                info = info.sort(function(a, b) {
+                    let aTime = new Date(a._kmd.ect),
+                        bTime = new Date(b._kmd.ect);
+                    if (aTime < bTime) {
+                        return 1;
+                    } else if (aTime > bTime) {
+                        return -1;
+                    } else {
+                        return 0;
+                    }
+                });
 
                 templates.get("home")
-
-                .then(template => {
+                    .then(template => {
                         let allPosts = { info };
                         if (category) {
                             allPosts.currentCategory = "/ " + category;
@@ -73,6 +84,9 @@ let loader = {
                             .find("#main-content")
                             .html(template(allPosts));
                         $(window).scrollTop(0);
+                    })
+                    .then(() => {
+                        Prism.highlightAll();
                     })
                     .then(() => {
                         // TODO: separate logic on different file
@@ -217,6 +231,19 @@ let loader = {
                 let currentPostId = currentPost._id;
                 data.comments.getPostComments(currentPostId)
                     .then(comments => {
+                        // sort
+                        comments = comments.sort(function(a, b) {
+                            let aTime = new Date(a._kmd.ect),
+                                bTime = new Date(b._kmd.ect);
+                            if (aTime < bTime) {
+                                return -1;
+                            } else if (aTime > bTime) {
+                                return 1;
+                            } else {
+                                return 0;
+                            }
+                        });
+
                         currentPost.comments = comments;
                         return currentPost;
                     })
@@ -226,6 +253,9 @@ let loader = {
                                 .find("#main-content")
                                 .html(template(postWithComments));
                             $(window).scrollTop(0);
+                        })
+                        .then(() => {
+                            Prism.highlightAll();
                         })
                         .then(() => {
                             $(".add-new-comment").hide();
